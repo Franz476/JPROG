@@ -1,0 +1,7 @@
+﻿  ConsoleApplication2.cpp
+c:\users\eryk1\desktop\jprog\consoleapplication2\consoleapplication2\consoleapplication2.cpp(43): warning C4473: „scanf_s”: przekazano niewystarczającą liczbę argumentów dla ciągu formatowania
+  c:\users\eryk1\desktop\jprog\consoleapplication2\consoleapplication2\consoleapplication2.cpp(43): note: symbole zastępcze i ich parametry oczekują 2 argumentów ze zmienną liczbą argumentów, ale podano następującą liczbę zmiennych argumentów: 1
+  c:\users\eryk1\desktop\jprog\consoleapplication2\consoleapplication2\consoleapplication2.cpp(43): note: brakujący argument 2 o zmiennej liczbie parametrów jest wymagany w ciągu formatu „%c”
+  c:\users\eryk1\desktop\jprog\consoleapplication2\consoleapplication2\consoleapplication2.cpp(43): note: ten argument jest używany jako rozmiar bufora
+c:\users\eryk1\desktop\jprog\consoleapplication2\consoleapplication2\consoleapplication2.cpp(80): warning C4477: „printf”: ciąg formatu „%c” wymaga argumentu typu „int”, ale argument 1 ze zmienną liczbą argumentów ma typ „char *”
+  ConsoleApplication2.vcxproj -> C:\Users\eryk1\Desktop\JPROG\consoleapplication2\Debug\ConsoleApplication2.exe
