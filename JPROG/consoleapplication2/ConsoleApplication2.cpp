@@ -34,11 +34,15 @@ int winAKT1 = 1;
 int winAKT2 = 1;
 int winAKT3 = 1;
 
+int wajcha_stat = 0;
+int topor_stat = 0;
+int drzewo_stat = 0;
+
 
 void chglocAKT1(Hero *hero)
 {
 	char x;
-	while (1)
+	while (winAKT1)
 	{
 		scanf_s("%c", &x);
 		getchar();
@@ -56,10 +60,10 @@ void chglocAKT1(Hero *hero)
 			printf("Czy chcesz sie rozejrzec dokladniej? (T/N)\n");
 			scanf_s("%c", &las_glebia);
 			getchar();
-			if (las_glebia == 'T')																					//dodac goto do pomieszczenia poczatkowego
+			if (las_glebia == 'T')																					//goto ogdrod/default
 			{
 					printf("Po chwili przechadzania sie po gluszy zauwazasz wielka dzwignie.\n");
-					printf("Nad nia widnieje napis \"Raz zgaszona niech taka juz pozostanie. Nie marnuj naszego poswiecenia.\n"");
+					printf("Nad nia widnieje napis \"Raz zgaszona niech taka juz pozostanie. Nie marnuj naszego poswiecenia.\"\n");
 					printf("Czy chcesz przesunac wielka dzwignie? (T/N)\n");
 					char las_glebia_dzwignia;
 					scanf_s("%c", &las_glebia_dzwignia);
@@ -69,6 +73,14 @@ void chglocAKT1(Hero *hero)
 						printf("W chwili, w ktorej wajcha uderza o metalowa obrecz ograniczajaca jej ruch slyszysz krzyk jakby wewnatrz swojej glowy.\n");
 						printf("Myslisz sobie \"Bywa xD\"");
 					}
+					else
+					{
+						printf("Nie robisz niczego.\n");															//goto ogrod/default
+					}
+			}
+			else
+			{
+				printf("Nie podejmujesz akcji. Lenistwo jest pewnego rodzaju loteria tak samo jak dzialanie.\n");
 			}
 			break;
 		case 'b':
