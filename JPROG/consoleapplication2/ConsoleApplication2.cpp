@@ -44,9 +44,7 @@ void chglocAKT1(Hero *hero)
 	char x;
 	while (winAKT1)
 	{
-		scanf_s("%c", &x);
-		getchar();
-		getchar();
+		x = getchar();
 		switch (x)
 		{
 		case 'a':

@@ -1,17 +1,11 @@
-﻿  pch.cpp
-  ConsoleApplication2.cpp
-c:\users\eryk1\desktop\jprog\jprog\consoleapplication2\consoleapplication2.cpp(47): warning C4473: „scanf_s”: przekazano niewystarczającą liczbę argumentów dla ciągu formatowania
-  c:\users\eryk1\desktop\jprog\jprog\consoleapplication2\consoleapplication2.cpp(47): note: symbole zastępcze i ich parametry oczekują 2 argumentów ze zmienną liczbą argumentów, ale podano następującą liczbę zmiennych argumentów: 1
-  c:\users\eryk1\desktop\jprog\jprog\consoleapplication2\consoleapplication2.cpp(47): note: brakujący argument 2 o zmiennej liczbie parametrów jest wymagany w ciągu formatu „%c”
-  c:\users\eryk1\desktop\jprog\jprog\consoleapplication2\consoleapplication2.cpp(47): note: ten argument jest używany jako rozmiar bufora
-c:\users\eryk1\desktop\jprog\jprog\consoleapplication2\consoleapplication2.cpp(61): warning C4473: „scanf_s”: przekazano niewystarczającą liczbę argumentów dla ciągu formatowania
-  c:\users\eryk1\desktop\jprog\jprog\consoleapplication2\consoleapplication2.cpp(61): note: symbole zastępcze i ich parametry oczekują 2 argumentów ze zmienną liczbą argumentów, ale podano następującą liczbę zmiennych argumentów: 1
-  c:\users\eryk1\desktop\jprog\jprog\consoleapplication2\consoleapplication2.cpp(61): note: brakujący argument 2 o zmiennej liczbie parametrów jest wymagany w ciągu formatu „%c”
-  c:\users\eryk1\desktop\jprog\jprog\consoleapplication2\consoleapplication2.cpp(61): note: ten argument jest używany jako rozmiar bufora
-c:\users\eryk1\desktop\jprog\jprog\consoleapplication2\consoleapplication2.cpp(69): warning C4473: „scanf_s”: przekazano niewystarczającą liczbę argumentów dla ciągu formatowania
-  c:\users\eryk1\desktop\jprog\jprog\consoleapplication2\consoleapplication2.cpp(69): note: symbole zastępcze i ich parametry oczekują 2 argumentów ze zmienną liczbą argumentów, ale podano następującą liczbę zmiennych argumentów: 1
-  c:\users\eryk1\desktop\jprog\jprog\consoleapplication2\consoleapplication2.cpp(69): note: brakujący argument 2 o zmiennej liczbie parametrów jest wymagany w ciągu formatu „%c”
-  c:\users\eryk1\desktop\jprog\jprog\consoleapplication2\consoleapplication2.cpp(69): note: ten argument jest używany jako rozmiar bufora
-c:\users\eryk1\desktop\jprog\jprog\consoleapplication2\consoleapplication2.cpp(103): warning C4477: „printf”: ciąg formatu „%c” wymaga argumentu typu „int”, ale argument 1 ze zmienną liczbą argumentów ma typ „char *”
-  LINK : nie znaleziono elementu C:\Users\eryk1\Desktop\JPROG\JPROG\consoleapplication2\Debug\ConsoleApplication2.exe ani nie został on skompilowany podczas ostatniego konsolidowania przyrostowego; zostanie wykonana pełna konsolidacja
+﻿  ConsoleApplication2.cpp
+c:\users\eryk1\desktop\jprog\jprog\consoleapplication2\consoleapplication2.cpp(59): warning C4473: „scanf_s”: przekazano niewystarczającą liczbę argumentów dla ciągu formatowania
+  c:\users\eryk1\desktop\jprog\jprog\consoleapplication2\consoleapplication2.cpp(59): note: symbole zastępcze i ich parametry oczekują 2 argumentów ze zmienną liczbą argumentów, ale podano następującą liczbę zmiennych argumentów: 1
+  c:\users\eryk1\desktop\jprog\jprog\consoleapplication2\consoleapplication2.cpp(59): note: brakujący argument 2 o zmiennej liczbie parametrów jest wymagany w ciągu formatu „%c”
+  c:\users\eryk1\desktop\jprog\jprog\consoleapplication2\consoleapplication2.cpp(59): note: ten argument jest używany jako rozmiar bufora
+c:\users\eryk1\desktop\jprog\jprog\consoleapplication2\consoleapplication2.cpp(67): warning C4473: „scanf_s”: przekazano niewystarczającą liczbę argumentów dla ciągu formatowania
+  c:\users\eryk1\desktop\jprog\jprog\consoleapplication2\consoleapplication2.cpp(67): note: symbole zastępcze i ich parametry oczekują 2 argumentów ze zmienną liczbą argumentów, ale podano następującą liczbę zmiennych argumentów: 1
+  c:\users\eryk1\desktop\jprog\jprog\consoleapplication2\consoleapplication2.cpp(67): note: brakujący argument 2 o zmiennej liczbie parametrów jest wymagany w ciągu formatu „%c”
+  c:\users\eryk1\desktop\jprog\jprog\consoleapplication2\consoleapplication2.cpp(67): note: ten argument jest używany jako rozmiar bufora
+c:\users\eryk1\desktop\jprog\jprog\consoleapplication2\consoleapplication2.cpp(101): warning C4477: „printf”: ciąg formatu „%c” wymaga argumentu typu „int”, ale argument 1 ze zmienną liczbą argumentów ma typ „char *”
   ConsoleApplication2.vcxproj -> C:\Users\eryk1\Desktop\JPROG\JPROG\consoleapplication2\Debug\ConsoleApplication2.exe
