@@ -17,7 +17,7 @@ typedef struct Hero
 {
 	char *name;																											//miejsce na adres
 	char klasa;
-	char loc;																											//lokacja 
+	char loc = NULL;																											//lokacja 
 	int hp;
 	int mp;
 	int dmg;
@@ -90,7 +90,7 @@ void chglocAKT1(Hero *hero)
 	char x;
 	while (winAKT1)
 	{
-		scanf_s("%c", &x);
+		scanf_s("%c", &x, 1);
 		getchar();
 		switch (x)
 		{
@@ -100,15 +100,15 @@ void chglocAKT1(Hero *hero)
 			OgrodOpis();
 			char las_glebia;
 			printf("Czy chcesz sie rozejrzec dokladniej? (T/N)\n");
-			scanf_s("%c", &las_glebia);
+			scanf_s("%c", &las_glebia, 1);
 			getchar();
 			if (las_glebia == 'T')																					//goto ogdrod/default
 			{
 					OgrodGlebiaOpis();
 					printf("Czy chcesz przesunac wielka dzwignie? (T/N)\n");
 					char ogrod_glebia_dzwignia;
-					scanf_s("%c", &ogrod_glebia_dzwignia);
-					getchar;
+					scanf_s("%c", &ogrod_glebia_dzwignia, 1);
+					getchar();
 					if (ogrod_glebia_dzwignia == 'T')
 					{
 						OgrodGlebiaWajchaOpis();
@@ -139,7 +139,7 @@ void chglocAKT1(Hero *hero)
 			break;
 		default:
 			printf("Pojawiasz sie w pomieszczeniu poczatkowym. Moze pora na podjecie dzialan?\n");
-			printf("Gdzie chcesz sie udac?\n");
+			printf("Gdzie chcesz sie udac?\n Ogrod (a), Kuznia (b), czy moze Korytarz (c)\n");
 			printf("%c", &hero->loc);
 			break;
 		}
@@ -175,7 +175,7 @@ Hero *create_hero()																										//Przydzielanie pamieci bohaterowi
 	return hero;
 }
 
-typedef struct LocAkt
+/*	typedef struct LocAkt
 {
 	char tag1;
 	char tag2;
@@ -198,7 +198,7 @@ typedef struct LocAkt
 			tag8 = 'h';																									//h to pokoj 8		wszystkie w akcie 3
 			tag9 = 'i';																									//i to pokoj 9	^^
 		};
-}LocAkt;
+}LocAkt;			*/
 
 
 
