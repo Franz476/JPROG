@@ -30,7 +30,6 @@ typedef struct Szczur
 	int status = 1;
 } Szczur;
 
-int winAKT1 = 1;
 int winAKT2 = 1;
 int winAKT3 = 1;
 
@@ -38,13 +37,45 @@ int wajcha_stat = 0;
 int topor_stat = 0;
 int drzewo_stat = 0;
 
+void prolog1()
+{
+	printf("Kazdy swiat w czasie kryzysu potrzebuje bohatera.\n\n");
+	kontynuowanie();
+	printf("Dzis zmagamy sie z nowym typem zagrozenia.\n\n");
+	kontynuowanie();
+	printf("Naszym dzisiejszym przeciwnikiem nie jest zaden stwor ani maz.\n");
+	printf("A przynajmniej nie bezposrednio");
+	kontynuowanie();
+	printf("");
+	printf("Oto moj swiat.\n\n");
+	printf("Z pewnych nieznanych przyczyn zostales wybrany do wypelnienia pewnej misji.\n\n");
+	kontynuowanie();
+	printf("Oczywiscie nie mozesz odmowic.\n\n");
+	kontynuowanie();
+	printf("Podaj swoje imie: ");
+}
+
+void prolog2(Hero* hero)																									//Funkcja prolog przyjmujaca za argument bohatera
+{
+
+	printf("Imie: %s, Klasa: %c, HP: %d MP: %d \n\n", hero->name, hero->klasa, hero->hp, hero->mp);																//Wyswietlenie statystyk
+	printf("Skoro wstep mamy za soba mozemy przejsc dalej.\n\n");
+	kontynuowanie();
+}
+
+void LasOpis()
+{
+
+}
 
 void chglocAKT1(Hero *hero)
 {
+	int winAKT1 = 1;
 	char x;
 	while (winAKT1)
 	{
-		x = getchar();
+		scanf_s("%c", &x);
+		getchar();
 		switch (x)
 		{
 		case 'a':
@@ -107,20 +138,7 @@ void chglocAKT1(Hero *hero)
 
 Hero *create_hero()																										//Przydzielanie pamieci bohaterowi
 {
-    printf("Kazdy swiat w czasie kryzysu potrzebuje bohatera.\n\n");
-	kontynuowanie();
-	printf("Dzis zmagamy sie z nowym typem zagrozenia.\n\n");
-	kontynuowanie();
-	printf("Naszym dzisiejszym przeciwnikiem nie jest zaden stwor ani maz.\n");
-	printf("A przynajmniej nie bezposrednio");
-	kontynuowanie();
-	printf("");
-	printf("Oto moj swiat.\n\n");
-	printf("Z pewnych nieznanych przyczyn zostales wybrany do wypelnienia pewnej misji.\n\n");
-	kontynuowanie();
-	printf("Oczywiscie nie mozesz odmowic.\n\n");
-	kontynuowanie();
-	printf("Podaj swoje imie: ");
+
 	char *buffer;
 	buffer = (char*)malloc(sizeof(char)*20);																			//przydzielanie pamieci buforowi
 	scanf_s("%s", buffer, 20);
@@ -173,13 +191,6 @@ typedef struct LocAkt
 
 
 
-void prolog(Hero* hero)																									//Funkcja prolog przyjmujaca za argument bohatera
-{
-
-	printf("Imie: %s, Klasa: %c, HP: %d MP: %d \n\n", hero->name, hero->klasa, hero->hp, hero->mp);																//Wyswietlenie statystyk
-	printf("Skoro wstep mamy za soba mozemy przejsc dalej.\n\n");
-	kontynuowanie();
-}
 
     void akt1(Hero *hero)
 {
@@ -197,8 +208,9 @@ void prolog(Hero* hero)																									//Funkcja prolog przyjmujaca za 
 int main()
 {
 	Hero* hero = NULL;																									//tworzymy wskaznik, i nadajemy mu wartosc =NULL //wskazuje na NIC
+	prolog1();
 	hero=create_hero();
-	prolog(hero);																										//przekazujemy go prologowi
+	prolog2(hero);																										//przekazujemy go prologowi
 	akt1(hero);
 	free(hero);
 	return 0;
