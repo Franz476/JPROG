@@ -30,19 +30,8 @@ typedef struct Szczur
 	int status = 1;
 } Szczur;
 
-struct WarunkiAktow
-{
-	int winAKT1 = 1;
 	int winAKT2 = 1;
 	int winAKT3 = 1;
-};
-
-struct WazneAkt1
-{
-	int wajcha_stat = 0;
-	int topor_stat = 0;
-	int drzewo_stat = 0;
-};
 
 
 void prolog1()
@@ -94,8 +83,12 @@ void OgrodGlebiaWajchaOpis()																																			//
 
 void chglocAKT1(Hero *hero)
 {
+	int winAKT1 = 1;
+	int *DrzewoStat = NULL;
+	int *WajchaStat = NULL;
+	int *ToporStat = NULL;
 	char x;
-	while (WarunkiAktow->winAKT1)
+	while (winAKT1)
 	{
 		scanf_s("%c", &x);
 		getchar();
