@@ -30,12 +30,20 @@ typedef struct Szczur
 	int status = 1;
 } Szczur;
 
-int winAKT2 = 1;
-int winAKT3 = 1;
+struct WarunkiAktow
+{
+	int winAKT1 = 1;
+	int winAKT2 = 1;
+	int winAKT3 = 1;
+};
 
-int wajcha_stat = 0;
-int topor_stat = 0;
-int drzewo_stat = 0;
+struct WazneAkt1
+{
+	int wajcha_stat = 0;
+	int topor_stat = 0;
+	int drzewo_stat = 0;
+};
+
 
 void prolog1()
 {
@@ -63,16 +71,31 @@ void prolog2(Hero* hero)																									//Funkcja prolog przyjmujaca za
 	kontynuowanie();
 }
 
-void LasOpis()
-{
-
-}
+void OgrodOpis()																																						//
+{																																										//
+	printf("Przechodzac tutaj czujesz nagly wzrost wilgotnosci, a temperatura spada.\n");																				//
+	printf("Bywales juz w podobnych miejscach, ale wrazenia z tego ogrodu sa mocniejsze niz kiedykolwiek bylo ci dane doswiadczyc\n");									//
+	printf("Po krotkim rozeznaniu dostrzegasz, ze kora drzew uklada sie w dziwne, regularne, a wrecz fraktalne ksztalty\n");											//
+	printf("Szumia liscie, a slonce ledwo przeswituje przez liscie\n");																									//
+}																																										//
+																																										//
+void OgrodGlebiaOpis()																																					//
+{																																										//
+	printf("Po chwili przechadzania sie po gluszy zauwazasz wielka dzwignie.\n");																						//
+	printf("Nad nia widnieje napis \"Raz zgaszona niech taka juz pozostanie. Nie marnuj naszego poswiecenia.\"\n");														//		Opisy do Ogrodu
+}																																										//
+																																										//
+void OgrodGlebiaWajchaOpis()																																			//
+{																																										//
+	printf("Wkladasz cala sile w poruszenie pradawnego mechanizmu. Ostatecznie udaje ci sie zmienic ustawienie przekladni.\n");											//
+	printf("W chwili, w ktorej wajcha uderza o metalowa obrecz ograniczajaca jej ruch slyszysz krzyk jakby wewnatrz swojej glowy.\n");									//
+	printf("Myslisz sobie \"Bywa xD\"");																																//
+}																																										//
 
 void chglocAKT1(Hero *hero)
 {
-	int winAKT1 = 1;
 	char x;
-	while (winAKT1)
+	while (WarunkiAktow->winAKT1)
 	{
 		scanf_s("%c", &x);
 		getchar();
@@ -81,26 +104,21 @@ void chglocAKT1(Hero *hero)
 		case 'a':
 			printf("Przechodzisz do Ogrodu.\n");
 			hero->loc = 'a';
-			printf("Przechodzac tutaj czujesz nagly wzrost wilgotnosci, a temperatura spada.\n");
-			printf("Bywales juz w podobnych miejscach, ale wrazenia z tego ogrodu sa mocniejsze niz kiedykolwiek bylo ci dane doswiadczyc\n");
-			printf("Po krotkim rozeznaniu dostrzegasz, ze kora drzew uklada sie w dziwne, regularne, a wrecz fraktalne ksztalty\n");
-			printf("Szumia liscie, a slonce ledwo przeswituje przez liscie");
+			OgrodOpis();
 			char las_glebia;
 			printf("Czy chcesz sie rozejrzec dokladniej? (T/N)\n");
 			scanf_s("%c", &las_glebia);
 			getchar();
 			if (las_glebia == 'T')																					//goto ogdrod/default
 			{
-					printf("Po chwili przechadzania sie po gluszy zauwazasz wielka dzwignie.\n");
-					printf("Nad nia widnieje napis \"Raz zgaszona niech taka juz pozostanie. Nie marnuj naszego poswiecenia.\"\n");
+					OgrodGlebiaOpis();
 					printf("Czy chcesz przesunac wielka dzwignie? (T/N)\n");
-					char las_glebia_dzwignia;
-					scanf_s("%c", &las_glebia_dzwignia);
-					if (las_glebia_dzwignia == 'T')
+					char ogrod_glebia_dzwignia;
+					scanf_s("%c", &ogrod_glebia_dzwignia);
+					getchar;
+					if (ogrod_glebia_dzwignia == 'T')
 					{
-						printf("Wkladasz cala sile w poruszenie pradawnego mechanizmu. Ostatecznie udaje ci sie zmienic ustawienie przekladni.\n");
-						printf("W chwili, w ktorej wajcha uderza o metalowa obrecz ograniczajaca jej ruch slyszysz krzyk jakby wewnatrz swojej glowy.\n");
-						printf("Myslisz sobie \"Bywa xD\"");
+						OgrodGlebiaWajchaOpis();
 					}
 					else
 					{
