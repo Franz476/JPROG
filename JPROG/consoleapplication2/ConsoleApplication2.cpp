@@ -17,7 +17,7 @@ typedef struct Hero
 {
 	char *name;																											//miejsce na adres
 	char klasa;
-	char loc;																											//lokacja 
+	char loc = NULL;																											//lokacja 
 	int hp;
 	int mp;
 	int dmg;
@@ -30,46 +30,88 @@ typedef struct Szczur
 	int status = 1;
 } Szczur;
 
-int winAKT1 = 1;
-int winAKT2 = 1;
-int winAKT3 = 1;
+	int winAKT2 = 1;
+	int winAKT3 = 1;
 
-int wajcha_stat = 0;
-int topor_stat = 0;
-int drzewo_stat = 0;
 
+void prolog1()
+{
+	printf("Kazdy swiat w czasie kryzysu potrzebuje bohatera.\n\n");
+	kontynuowanie();
+	printf("Dzis zmagamy sie z nowym typem zagrozenia.\n\n");
+	kontynuowanie();
+	printf("Naszym dzisiejszym przeciwnikiem nie jest zaden stwor ani maz.\n");
+	printf("A przynajmniej nie bezposrednio");
+	kontynuowanie();
+	printf("");
+	printf("Oto moj swiat.\n\n");
+	printf("Z pewnych nieznanych przyczyn zostales wybrany do wypelnienia pewnej misji.\n\n");
+	kontynuowanie();
+	printf("Oczywiscie nie mozesz odmowic.\n\n");
+	kontynuowanie();
+	printf("Podaj swoje imie: ");
+}
+
+void prolog2(Hero* hero)																									//Funkcja prolog przyjmujaca za argument bohatera
+{
+
+	printf("Imie: %s, Klasa: %c, HP: %d MP: %d \n\n", hero->name, hero->klasa, hero->hp, hero->mp);																//Wyswietlenie statystyk
+	printf("Skoro wstep mamy za soba mozemy przejsc dalej.\n\n");
+	kontynuowanie();
+}
+
+void OgrodOpis()																																						//
+{																																										//
+	printf("Przechodzac tutaj czujesz nagly wzrost wilgotnosci, a temperatura spada.\n");																				//
+	printf("Bywales juz w podobnych miejscach, ale wrazenia z tego ogrodu sa mocniejsze niz kiedykolwiek bylo ci dane doswiadczyc\n");									//
+	printf("Po krotkim rozeznaniu dostrzegasz, ze kora drzew uklada sie w dziwne, regularne, a wrecz fraktalne ksztalty\n");											//
+	printf("Szumia liscie, a slonce ledwo przeswituje przez liscie\n");																									//
+}																																										//
+																																										//
+void OgrodGlebiaOpis()																																					//
+{																																										//
+	printf("Po chwili przechadzania sie po gluszy zauwazasz wielka dzwignie.\n");																						//
+	printf("Nad nia widnieje napis \"Raz zgaszona niech taka juz pozostanie. Nie marnuj naszego poswiecenia.\"\n");														//		Opisy do Ogrodu
+}																																										//
+																																										//
+void OgrodGlebiaWajchaOpis()																																			//
+{																																										//
+	printf("Wkladasz cala sile w poruszenie pradawnego mechanizmu. Ostatecznie udaje ci sie zmienic ustawienie przekladni.\n");											//
+	printf("W chwili, w ktorej wajcha uderza o metalowa obrecz ograniczajaca jej ruch slyszysz krzyk jakby wewnatrz swojej glowy.\n");									//
+	printf("Myslisz sobie \"Bywa xD\"");																																//
+}																																										//
 
 void chglocAKT1(Hero *hero)
 {
+	int winAKT1 = 1;
+	int *DrzewoStat = NULL;
+	int *WajchaStat = NULL;
+	int *ToporStat = NULL;
 	char x;
 	while (winAKT1)
 	{
-		x = getchar();
+		scanf_s("%c", &x, 1);
+		getchar();
 		switch (x)
 		{
 		case 'a':
 			printf("Przechodzisz do Ogrodu.\n");
 			hero->loc = 'a';
-			printf("Przechodzac tutaj czujesz nagly wzrost wilgotnosci, a temperatura spada.\n");
-			printf("Bywales juz w podobnych miejscach, ale wrazenia z tego ogrodu sa mocniejsze niz kiedykolwiek bylo ci dane doswiadczyc\n");
-			printf("Po krotkim rozeznaniu dostrzegasz, ze kora drzew uklada sie w dziwne, regularne, a wrecz fraktalne ksztalty\n");
-			printf("Szumia liscie, a slonce ledwo przeswituje przez liscie");
+			OgrodOpis();
 			char las_glebia;
 			printf("Czy chcesz sie rozejrzec dokladniej? (T/N)\n");
-			scanf_s("%c", &las_glebia);
+			scanf_s("%c", &las_glebia, 1);
 			getchar();
 			if (las_glebia == 'T')																					//goto ogdrod/default
 			{
-					printf("Po chwili przechadzania sie po gluszy zauwazasz wielka dzwignie.\n");
-					printf("Nad nia widnieje napis \"Raz zgaszona niech taka juz pozostanie. Nie marnuj naszego poswiecenia.\"\n");
+					OgrodGlebiaOpis();
 					printf("Czy chcesz przesunac wielka dzwignie? (T/N)\n");
-					char las_glebia_dzwignia;
-					scanf_s("%c", &las_glebia_dzwignia);
-					if (las_glebia_dzwignia == 'T')
+					char ogrod_glebia_dzwignia;
+					scanf_s("%c", &ogrod_glebia_dzwignia, 1);
+					getchar();
+					if (ogrod_glebia_dzwignia == 'T')
 					{
-						printf("Wkladasz cala sile w poruszenie pradawnego mechanizmu. Ostatecznie udaje ci sie zmienic ustawienie przekladni.\n");
-						printf("W chwili, w ktorej wajcha uderza o metalowa obrecz ograniczajaca jej ruch slyszysz krzyk jakby wewnatrz swojej glowy.\n");
-						printf("Myslisz sobie \"Bywa xD\"");
+						OgrodGlebiaWajchaOpis();
 					}
 					else
 					{
@@ -97,7 +139,7 @@ void chglocAKT1(Hero *hero)
 			break;
 		default:
 			printf("Pojawiasz sie w pomieszczeniu poczatkowym. Moze pora na podjecie dzialan?\n");
-			printf("Gdzie chcesz sie udac?\n");
+			printf("Gdzie chcesz sie udac?\n Ogrod (a), Kuznia (b), czy moze Korytarz (c)\n");
 			printf("%c", &hero->loc);
 			break;
 		}
@@ -107,20 +149,7 @@ void chglocAKT1(Hero *hero)
 
 Hero *create_hero()																										//Przydzielanie pamieci bohaterowi
 {
-    printf("Kazdy swiat w czasie kryzysu potrzebuje bohatera.\n\n");
-	kontynuowanie();
-	printf("Dzis zmagamy sie z nowym typem zagrozenia.\n\n");
-	kontynuowanie();
-	printf("Naszym dzisiejszym przeciwnikiem nie jest zaden stwor ani maz.\n");
-	printf("A przynajmniej nie bezposrednio");
-	kontynuowanie();
-	printf("");
-	printf("Oto moj swiat.\n\n");
-	printf("Z pewnych nieznanych przyczyn zostales wybrany do wypelnienia pewnej misji.\n\n");
-	kontynuowanie();
-	printf("Oczywiscie nie mozesz odmowic.\n\n");
-	kontynuowanie();
-	printf("Podaj swoje imie: ");
+
 	char *buffer;
 	buffer = (char*)malloc(sizeof(char)*20);																			//przydzielanie pamieci buforowi
 	scanf_s("%s", buffer, 20);
@@ -146,7 +175,7 @@ Hero *create_hero()																										//Przydzielanie pamieci bohaterowi
 	return hero;
 }
 
-typedef struct LocAkt
+/*	typedef struct LocAkt
 {
 	char tag1;
 	char tag2;
@@ -169,17 +198,10 @@ typedef struct LocAkt
 			tag8 = 'h';																									//h to pokoj 8		wszystkie w akcie 3
 			tag9 = 'i';																									//i to pokoj 9	^^
 		};
-}LocAkt;
+}LocAkt;			*/
 
 
 
-void prolog(Hero* hero)																									//Funkcja prolog przyjmujaca za argument bohatera
-{
-
-	printf("Imie: %s, Klasa: %c, HP: %d MP: %d \n\n", hero->name, hero->klasa, hero->hp, hero->mp);																//Wyswietlenie statystyk
-	printf("Skoro wstep mamy za soba mozemy przejsc dalej.\n\n");
-	kontynuowanie();
-}
 
     void akt1(Hero *hero)
 {
@@ -197,8 +219,9 @@ void prolog(Hero* hero)																									//Funkcja prolog przyjmujaca za 
 int main()
 {
 	Hero* hero = NULL;																									//tworzymy wskaznik, i nadajemy mu wartosc =NULL //wskazuje na NIC
+	prolog1();
 	hero=create_hero();
-	prolog(hero);																										//przekazujemy go prologowi
+	prolog2(hero);																										//przekazujemy go prologowi
 	akt1(hero);
 	free(hero);
 	return 0;
