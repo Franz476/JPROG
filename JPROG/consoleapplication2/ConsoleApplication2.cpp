@@ -30,9 +30,9 @@ typedef struct Szczur
 	int status = 1;
 } Szczur;
 
-	int winAKT2 = 1;
-	int winAKT3 = 1;
-
+int *winAKT1 = NULL;
+int *winAKT2 = NULL;
+int *winAKT3 = NULL;
 
 void prolog1()
 {
@@ -97,12 +97,15 @@ void KorytarzOpis()																																						//
 
 void chglocAKT1(Hero *hero)
 {
-	int winAKT1 = 1;
+	int akt1 = 1;
+	*winAKT1 = akt1;
 	int *DrzewoStat = NULL;
 	int *WajchaStat = NULL;
 	int *ToporStat = NULL;
+
+	WajchaStat = (int*)malloc(sizeof(int));
 	char x;
-	while (winAKT1)
+	while (akt1)
 	{
 		scanf_s("%c", &x, 1);
 		getchar();
@@ -126,10 +129,13 @@ void chglocAKT1(Hero *hero)
 					if (ogrod_glebia_dzwignia == 'T')
 					{
 						OgrodGlebiaWajchaOpis();
+						*WajchaStat = 1;
+						printf("%d", *WajchaStat);
 					}
 					else
 					{
 						printf("Nie robisz niczego.\n");															//goto ogrod/default
+						printf("%d", *WajchaStat);
 					}
 			}
 			else
@@ -161,15 +167,15 @@ Hero *create_hero()																										//Przydzielanie pamieci bohaterowi
 {
 
 	char *buffer;
-	buffer = (char*)malloc(sizeof(char)*20);																			//przydzielanie pamieci buforowi
-	scanf_s("%s", buffer, 20);
+	buffer = (char*)malloc(sizeof(char)*50);																			//przydzielanie pamieci buforowi
+	scanf_s("%s", buffer, 50);
 	getchar();
 
 	Hero *hero = (Hero*)malloc(sizeof(Hero));																			//ilość pamięci przydzielonej wyznaczana na podstawie wielkosci typu Hero
 
 
 	hero->name = (char*)malloc(sizeof(char)*strlen(buffer) + 1);														//przypisanie zmiennej name wskazywanej przez hero rozmiaru char * dlugosc imienia
-	strcpy_s(hero->name, 20, buffer);																					//kopiowanie  name do hero->name ((zapisuje wartosc name do imienia bohatera))
+	strcpy_s(hero->name, 50, buffer);																					//kopiowanie  name do hero->name ((zapisuje wartosc name do imienia bohatera))
 
     free(buffer);																							            //usuwanie pamieci buffera;
 	hero->hp = 100;																										//zapisywanie hp																									
@@ -228,6 +234,9 @@ Hero *create_hero()																										//Przydzielanie pamieci bohaterowi
 
 int main()
 {
+	winAKT1 = (int*)malloc(sizeof(int));
+	winAKT2 = (int*)malloc(sizeof(int));
+	winAKT3 = (int*)malloc(sizeof(int));
 	Hero* hero = NULL;																									//tworzymy wskaznik, i nadajemy mu wartosc =NULL //wskazuje na NIC
 	prolog1();
 	hero=create_hero();
