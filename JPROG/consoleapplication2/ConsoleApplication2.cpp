@@ -81,6 +81,20 @@ void OgrodGlebiaWajchaOpis()																																			//
 	printf("Myslisz sobie \"Bywa xD\"");																																//
 }																																										//
 
+void KuzniaOpis()																																						//
+{																																										//
+	printf("Wchodzac tutaj spodziewales sie zaru, ale niczym sie to pomieszcze nie rozni od wielu innych w tym zamku.\n");												//
+	printf("Podchodzac do wielkiego wglebienia w podlodze dostrzegasz slady sadzy i odlamkow metalu\n");																//		Opisy do Kuzni
+	printf("Prawdopodobnie bylo to palenisko sluzace do wytapiania czegokolwiek, co tubylcy akurat potrzebowali\n");													//
+	printf("Zadziwiajace jest to, ze tak wielkie palenisko, ze tak wielki zar mogl zgasnac. Moze w jakis sposob da sie przywrocic mu dawny zar?\n");					//
+}																																										//
+
+void KorytarzOpis()																																						//
+{																																										//
+	printf("Widzisz jedynie praktycznie niekonczaca sie sciezke. Jedynie latarnie podwieszane na scianie daja jakies swiatlo\n");										//		Opisy do Korytarza
+	printf("Czujesz przeciag, wiec prawdopodobnie gdzies jest przejscie, ale mimo dlugich poszukiwan nie mozesz go znalezc\n");											//
+}																																										//
+
 void chglocAKT1(Hero *hero)
 {
 	int winAKT1 = 1;
@@ -126,21 +140,17 @@ void chglocAKT1(Hero *hero)
 		case 'b':
 			printf("Przechodzisz do Kuzni.\n");
 			hero->loc = 'b';
-			printf("Wchodzac tutaj spodziewales sie zaru, ale niczym sie to pomieszcze nie rozni od wielu innych w tym zamku.\n");
-			printf("Podchodzac do wielkiego wglebienia w podlodze dostrzegasz slady sadzy i odlamkow metalu\n");
-			printf("Prawdopodobnie bylo to palenisko sluzace do wytapiania czegokolwiek, co tubylcy akurat potrzebowali\n");
-			printf("Zadziwiajace jest to, ze tak wielkie palenisko, ze tak wielki zar mogl zgasnac. Moze w jakis sposob da sie przywrocic mu dawny zar?\n");
+			KuzniaOpis();
 			break;
 		case 'c':
 			printf("Przechodzisz do Korytarza.\n");
 			hero->loc = 'c';
-			printf("Widzisz jedynie praktycznie niekonczaca sie sciezke. Jedynie latarnie podwieszane na scianie daja jakies swiatlo\n");
-			printf("Czujesz przeciag, wiec prawdopodobnie gdzies jest przejscie, ale mimo dlugich poszukiwan nie mozesz go znalezc\n");
+			KorytarzOpis();
 			break;
 		default:
 			printf("Pojawiasz sie w pomieszczeniu poczatkowym. Moze pora na podjecie dzialan?\n");
 			printf("Gdzie chcesz sie udac?\n Ogrod (a), Kuznia (b), czy moze Korytarz (c)\n");
-			printf("%c", &hero->loc);
+//			printf("%c", &hero->loc);																			//idk po co 
 			break;
 		}
 
@@ -165,12 +175,12 @@ Hero *create_hero()																										//Przydzielanie pamieci bohaterowi
 	hero->hp = 100;																										//zapisywanie hp																									
 	hero->mp = 100;																										//zapisywanie mp
 	hero->dmg = 50;
-	char klasa;
+	char klasa;																											//deklaracja klasy
 	printf("Jaka klase wybierasz? (W)ojownik, (M)ag, czy moze (L)otrzyk? ");
 	scanf_s("%c", &klasa, 1);
 	getchar();
-	hero->klasa = klasa;
-	printf("A wiec wybrales profesje %c\n", hero->klasa);
+	hero->klasa = klasa;																								//przypisanie elementowi klasa ze struktury heto wartosci zmiennej lokalnej o nazwie klasa
+	printf("A wiec wybrales profesje %c\n", hero->klasa);																//sprawdzenie
 	kontynuowanie();
 	return hero;
 }
@@ -180,9 +190,9 @@ Hero *create_hero()																										//Przydzielanie pamieci bohaterowi
 	char tag1;
 	char tag2;
 	char tag3;
-	char tag4;
-	char tag5;
-	char tag6;
+	char tag4;																											//Moze
+	char tag5;																											//Sie
+	char tag6;																											//Przyda
 	char tag7;
 	char tag8;
 	char tag9;
@@ -223,6 +233,6 @@ int main()
 	hero=create_hero();
 	prolog2(hero);																										//przekazujemy go prologowi
 	akt1(hero);
-	free(hero);
+	free(hero);																											//prawdziwa przygoda bohatera konczy sie dopiero tutaj
 	return 0;
 }
