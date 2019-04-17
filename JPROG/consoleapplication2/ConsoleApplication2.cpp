@@ -81,13 +81,21 @@ void OgrodGlebiaWajchaOpis()																																			//
 	printf("Myslisz sobie \"Bywa xD\"");																																//
 }																																										//
 
-void KuzniaOpis()																																						//
+void KuzniaOFFOpis()																																						//
 {																																										//
 	printf("Wchodzac tutaj spodziewales sie zaru, ale niczym sie to pomieszcze nie rozni od wielu innych w tym zamku.\n");												//
 	printf("Podchodzac do wielkiego wglebienia w podlodze dostrzegasz slady sadzy i odlamkow metalu\n");																//		Opisy do Kuzni
 	printf("Prawdopodobnie bylo to palenisko sluzace do wytapiania czegokolwiek, co tubylcy akurat potrzebowali\n");													//
 	printf("Zadziwiajace jest to, ze tak wielkie palenisko, ze tak wielki zar mogl zgasnac. Moze w jakis sposob da sie przywrocic mu dawny zar?\n");					//
 }																																										//
+
+void KuzniaONOpis()
+{
+	printf("Nazwa nie zawodzi\n.");
+	printf("Juz z dosyc sporej odleglosci bylo widac zolto-pomaranczowe swiatlo, ktore swoja natura zdradzalo wyglad pomieszczenia.\n");
+	printf("We wnetrzu panuje przeogromna temperatura, a dookola porozrzucane sa kawalki metalu.\n");
+
+}
 
 void KorytarzOpis()																																						//
 {																																										//
@@ -104,6 +112,7 @@ void chglocAKT1(Hero *hero)
 	int *ToporStat = NULL;
 
 	WajchaStat = (int*)malloc(sizeof(int));
+	ToporStat = (int*)malloc(sizeof(int));
 	char x;
 	while (akt1)
 	{
@@ -130,12 +139,12 @@ void chglocAKT1(Hero *hero)
 					{
 						OgrodGlebiaWajchaOpis();
 						*WajchaStat = 1;
-						printf("%d", *WajchaStat);
+						printf("%d\n", *WajchaStat);
 					}
 					else
 					{
 						printf("Nie robisz niczego.\n");															//goto ogrod/default
-						printf("%d", *WajchaStat);
+						printf("%d\n", *WajchaStat);
 					}
 			}
 			else
@@ -146,7 +155,15 @@ void chglocAKT1(Hero *hero)
 		case 'b':
 			printf("Przechodzisz do Kuzni.\n");
 			hero->loc = 'b';
-			KuzniaOpis();
+			if (*WajchaStat == 1)
+			{
+				KuzniaONOpis();
+				printf("Moze warto przetopic")
+			}
+			else
+			{
+				KuzniaOFFOpis();
+			}
 			break;
 		case 'c':
 			printf("Przechodzisz do Korytarza.\n");
@@ -166,7 +183,7 @@ void chglocAKT1(Hero *hero)
 Hero *create_hero()																										//Przydzielanie pamieci bohaterowi
 {
 
-	char *buffer;
+	char *buffer = NULL;
 	buffer = (char*)malloc(sizeof(char)*50);																			//przydzielanie pamieci buforowi
 	scanf_s("%s", buffer, 50);
 	getchar();
@@ -176,8 +193,8 @@ Hero *create_hero()																										//Przydzielanie pamieci bohaterowi
 
 	hero->name = (char*)malloc(sizeof(char)*strlen(buffer) + 1);														//przypisanie zmiennej name wskazywanej przez hero rozmiaru char * dlugosc imienia
 	strcpy_s(hero->name, 50, buffer);																					//kopiowanie  name do hero->name ((zapisuje wartosc name do imienia bohatera))
-
-    free(buffer);																							            //usuwanie pamieci buffera;
+	
+//    free(buffer);																							            //usuwanie pamieci buffera;
 	hero->hp = 100;																										//zapisywanie hp																									
 	hero->mp = 100;																										//zapisywanie mp
 	hero->dmg = 50;
