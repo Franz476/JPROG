@@ -198,11 +198,11 @@ void chglocAKT1(Hero *hero)
 				if (kuznia_przetapianie == 'T' || kuznia_przetapianie == 't')
 				{
 					ToporPowstanie();
+					*ToporStat = 1;
 				}
 				else
 				{
 					ToporNiePowstanie();
-					*ToporStat = 1;
 				}
 			}
 			else
