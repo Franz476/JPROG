@@ -104,8 +104,14 @@ void ToporPowstanie()																																					//
 	printf("Znowu slyszysz ten krzyk.\n");																																//
 	printf("Przed toba,a kamiennej podlodze, pojawia sie napis zapisany jakby ogniem.\n");																				//
 	printf("\"POJAWIL SIE TEN, KTORY WLADA OGNIEM, CHOCIAZ SAM NIEROZPALONY JEST. ON oBALI TRZECH TYRANOW I UWOLNI NAS\"\n");											//
-	printf("Wszystko znika rownie szybko jak sie zaczelo.");																											//
+	printf("Wszystko znika rownie szybko jak sie zaczelo.\n");																											//
 }																																										//
+
+void ToporNiePowstanie()
+{
+	printf("Patrzysz jedynie na lezace w tym pomieszczeniu odlamki metalu.\n");
+	printf("Wiesz jednak, ze predzej czy pozniej bedzie trzeba cos z tym zrobic, bo magiczna ruda zawsze ma wplyw na los bohatera.\n");
+}
 
 void KuzniaONOpis()
 {
@@ -187,13 +193,17 @@ void chglocAKT1(Hero *hero)
 				printf("Moze warto przetopic");
 				char kuznia_przetapianie;
 				printf("Jaka jest twoja decyzja co do amatorskich prac kowalskich? (T/N)\n");
-				scanf("%c", &kuznia_przetapianie, 1);
+				scanf_s("%c", &kuznia_przetapianie, 1);
 				getchar();
 				if (kuznia_przetapianie == 'T' || kuznia_przetapianie == 't')
 				{
-					
+					ToporPowstanie();
 				}
-				
+				else
+				{
+					ToporNiePowstanie();
+					*ToporStat = 1;
+				}
 			}
 			else
 			{
