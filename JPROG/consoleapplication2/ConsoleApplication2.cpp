@@ -80,13 +80,31 @@ void OgrodGlebiaWajchaOpis()																																			//
 	printf("W chwili, w ktorej wajcha uderza o metalowa obrecz ograniczajaca jej ruch slyszysz krzyk jakby wewnatrz swojej glowy.\n");									//
 	printf("Myslisz sobie \"Bywa xD\"");																																//
 }																																										//
+																																										//
+void OgrodWajcha0()																																						//
+{																																										//
+	printf("Znasz juz to miejsce.");																																	//
+	printf("Dalsza wedrowka nie ma sensu.");																															//
+}																																										//
 
-void KuzniaOFFOpis()																																						//
+void KuzniaOFFOpis()																																					//
 {																																										//
 	printf("Wchodzac tutaj spodziewales sie zaru, ale niczym sie to pomieszcze nie rozni od wielu innych w tym zamku.\n");												//
 	printf("Podchodzac do wielkiego wglebienia w podlodze dostrzegasz slady sadzy i odlamkow metalu\n");																//		Opisy do Kuzni
 	printf("Prawdopodobnie bylo to palenisko sluzace do wytapiania czegokolwiek, co tubylcy akurat potrzebowali\n");													//
 	printf("Zadziwiajace jest to, ze tak wielkie palenisko, ze tak wielki zar mogl zgasnac. Moze w jakis sposob da sie przywrocic mu dawny zar?\n");					//
+}																																										//
+																																										//
+void ToporPowstanie()																																					//
+{																																										//
+	printf("Zbierasz wszystkie porozrzucane odlamki\n");																												//
+	printf("Wrzucasz je do pieca i wciskasz przycisk z ksztalte topora.\n");																							//
+	printf("Nagle zaczynaja cie otaczac plomienie\n");																													//
+	printf("Chociaz tyle dobrego, ze cie nie zmieniaja w kupke popiolu\n");																								//
+	printf("Znowu slyszysz ten krzyk.\n");																																//
+	printf("Przed toba,a kamiennej podlodze, pojawia sie napis zapisany jakby ogniem.\n");																				//
+	printf("\"POJAWIL SIE TEN, KTORY WLADA OGNIEM, CHOCIAZ SAM NIEROZPALONY JEST. ON oBALI TRZECH TYRANOW I UWOLNI NAS\"\n");											//
+	printf("Wszystko znika rownie szybko jak sie zaczelo.");																											//
 }																																										//
 
 void KuzniaONOpis()
@@ -113,6 +131,7 @@ void chglocAKT1(Hero *hero)
 
 	WajchaStat = (int*)malloc(sizeof(int));
 	ToporStat = (int*)malloc(sizeof(int));
+	DrzewoStat = (int*)malloc(sizeof(int));
 	char x;
 	while (akt1)
 	{
@@ -121,35 +140,42 @@ void chglocAKT1(Hero *hero)
 		switch (x)
 		{
 		case 'a':
-			printf("Przechodzisz do Ogrodu.\n");
-			hero->loc = 'a';
-			OgrodOpis();
-			char las_glebia;
-			printf("Czy chcesz sie rozejrzec dokladniej? (T/N)\n");
-			scanf_s("%c", &las_glebia, 1);
-			getchar();
-			if (las_glebia == 'T')																					//goto ogdrod/default
+			if (*WajchaStat == 0)
 			{
+				OgrodWajcha0();
+			}
+			else
+			{
+				printf("Przechodzisz do Ogrodu.\n");
+				hero->loc = 'a';
+				OgrodOpis();
+				char ogrod_glebia;
+				printf("Czy chcesz sie rozejrzec dokladniej? (T/N)\n");
+				scanf_s("%c", &ogrod_glebia, 1);
+				getchar();
+				if (ogrod_glebia == 'T' || ogrod_glebia == 't')																					
+				{
 					OgrodGlebiaOpis();
 					printf("Czy chcesz przesunac wielka dzwignie? (T/N)\n");
 					char ogrod_glebia_dzwignia;
 					scanf_s("%c", &ogrod_glebia_dzwignia, 1);
 					getchar();
-					if (ogrod_glebia_dzwignia == 'T')
+					if (ogrod_glebia_dzwignia == 'T' || ogrod_glebia_dzwignia == 't')
 					{
 						OgrodGlebiaWajchaOpis();
 						*WajchaStat = 1;
-						printf("%d\n", *WajchaStat);
+						//						printf("%d\n", *WajchaStat);
 					}
 					else
 					{
-						printf("Nie robisz niczego.\n");															//goto ogrod/default
+						printf("Nie robisz niczego.\n");															
 						printf("%d\n", *WajchaStat);
 					}
-			}
-			else
-			{
-				printf("Nie podejmujesz akcji. Lenistwo jest pewnego rodzaju loteria tak samo jak dzialanie.\n");
+				}
+				else
+				{
+					printf("Nie podejmujesz akcji. Lenistwo jest pewnego rodzaju loteria tak samo jak dzialanie.\n");
+				}
 			}
 			break;
 		case 'b':
@@ -158,7 +184,16 @@ void chglocAKT1(Hero *hero)
 			if (*WajchaStat == 1)
 			{
 				KuzniaONOpis();
-				printf("Moze warto przetopic")
+				printf("Moze warto przetopic");
+				char kuznia_przetapianie;
+				printf("Jaka jest twoja decyzja co do amatorskich prac kowalskich? (T/N)\n");
+				scanf("%c", &kuznia_przetapianie, 1);
+				getchar();
+				if (kuznia_przetapianie == 'T' || kuznia_przetapianie == 't')
+				{
+					
+				}
+				
 			}
 			else
 			{
@@ -194,7 +229,7 @@ Hero *create_hero()																										//Przydzielanie pamieci bohaterowi
 	hero->name = (char*)malloc(sizeof(char)*strlen(buffer) + 1);														//przypisanie zmiennej name wskazywanej przez hero rozmiaru char * dlugosc imienia
 	strcpy_s(hero->name, 50, buffer);																					//kopiowanie  name do hero->name ((zapisuje wartosc name do imienia bohatera))
 	
-//    free(buffer);																							            //usuwanie pamieci buffera;
+    free(buffer);																							            //usuwanie pamieci buffera;
 	hero->hp = 100;																										//zapisywanie hp																									
 	hero->mp = 100;																										//zapisywanie mp
 	hero->dmg = 50;
@@ -236,7 +271,7 @@ Hero *create_hero()																										//Przydzielanie pamieci bohaterowi
 
 
 
-    void akt1(Hero *hero)
+   void akt1(Hero *hero)
 {
 	printf("AKT1\n\n");
 	kontynuowanie();
