@@ -158,7 +158,7 @@ void chglocAKT1(Hero *hero)
 			if (*WajchaStat == 1)
 			{
 				KuzniaONOpis();
-				printf("Moze warto przetopic")
+				printf("Moze warto przetopic");
 			}
 			else
 			{
@@ -194,7 +194,7 @@ Hero *create_hero()																										//Przydzielanie pamieci bohaterowi
 	hero->name = (char*)malloc(sizeof(char)*strlen(buffer) + 1);														//przypisanie zmiennej name wskazywanej przez hero rozmiaru char * dlugosc imienia
 	strcpy_s(hero->name, 50, buffer);																					//kopiowanie  name do hero->name ((zapisuje wartosc name do imienia bohatera))
 	
-//    free(buffer);																							            //usuwanie pamieci buffera;
+    free(buffer);																							            //usuwanie pamieci buffera;
 	hero->hp = 100;																										//zapisywanie hp																									
 	hero->mp = 100;																										//zapisywanie mp
 	hero->dmg = 50;

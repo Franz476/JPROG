@@ -1,3 +1,2 @@
 ﻿  ConsoleApplication2.cpp
-c:\users\eryk1\desktop\jprog\jprog\consoleapplication2\consoleapplication2.cpp(143): warning C4477: „printf”: ciąg formatu „%c” wymaga argumentu typu „int”, ale argument 1 ze zmienną liczbą argumentów ma typ „char *”
   ConsoleApplication2.vcxproj -> C:\Users\eryk1\Desktop\JPROG\JPROG\consoleapplication2\Debug\ConsoleApplication2.exe
