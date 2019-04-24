@@ -4,13 +4,17 @@
 #include <windows.h>
 #define _CRT_SECURE_NO_WARNINGS
 
+#define kontynuowanie()	\
+			printf("Wcisnij dowolny przycisk, aby kontynuowac.\n\n");	\
+			getchar();	\
 
-
+/*
 void kontynuowanie()
-{
-	printf("Wcisnij dowolny przycisk, aby kontynuowac.\n\n\n");
+	{
+	printf("Wcisnij dowolny przycisk, aby kontynuowac.\n\n");
 	getchar();
-}
+	}
+*/
 
 
 typedef struct Hero
@@ -29,6 +33,18 @@ typedef struct Szczur
 	int dmg = 20;
 	int status = 1;
 } Szczur;
+
+
+void Walka1(Hero *hero)
+{
+	Szczur szczur;
+	while (hero->hp > 0 && szczur.hp > 0)
+	{
+		char Akcja;
+		printf("Wolisz (A)takowac, czy sie (B)ronic?");
+
+	}
+}
 
 int *winAKT1 = NULL;
 int *winAKT2 = NULL;
@@ -81,6 +97,25 @@ void OgrodGlebiaWajchaOpis()																																			//
 	printf("Myslisz sobie \"Bywa xD\"");																																//
 }																																										//
 																																										//
+void OgrodToDrzewo()
+{
+	printf("Wchodzac tutaj zauwazasz, ze wszystkie drzewa rozsunely sie tworzac cos na ksztalt sciezki.\n");
+	printf("Idac ta droga docierasz do prawdopodbnie najwiekszego drzewa w calym ogrodzie.\n");
+	printf("Jego kora oprocz spodziewanych fraktalych ksztaltow pokryta jest rowniez sladami po uderzeniach z uzyciem ognia.\n");
+	printf("Przypominasz sobie proroctwo.\n");
+}
+
+void DrzewoPyt()
+{
+	printf("Twoja niewielka sila nie pozwala ci na biegle operowanie toporem.\n");
+	printf("Na moment przed uderzeniem wokol drzewa pojawia sie sila, ktora uniemozliwia ci jego zniszczenie.\n");
+	printf("Drzewo zaczyna sie chaotycznie poruszac.\n");
+	printf("Po chwili szamotania sie uspokaja sie i przemawia.\n");
+	printf("\"A WIEC CHCESZ DOKONCZYC TO, CO ZAPOCZATKOWALI TWOI POPRZEDNICY?\"");
+	printf("\"HMMM, NIE WYGLADASZ JAK ONI, ANI NIE MASZ ICH AURY\"");
+	printf("\"POWIEDZ MI WIEC, ILE WYNOSI 2+2*2?\"");
+}
+
 void OgrodWajcha0()																																						//
 {																																										//
 	printf("Znasz juz to miejsce.");																																	//
@@ -121,11 +156,17 @@ void KuzniaONOpis()
 
 }
 
-void KorytarzOpis()																																						//
+void KorytarzOpis0()																																						//
 {																																										//
 	printf("Widzisz jedynie praktycznie niekonczaca sie sciezke. Jedynie latarnie podwieszane na scianie daja jakies swiatlo\n");										//		Opisy do Korytarza
 	printf("Czujesz przeciag, wiec prawdopodobnie gdzies jest przejscie, ale mimo dlugich poszukiwan nie mozesz go znalezc\n");											//
 }																																										//
+
+void KorytarzOpis1()
+{
+	printf("Widzisz, jak wraz z zamykajacymi sie za toba drzwiami otwiera sie kawalek sciany przed toba.\n");
+	printf("Czujesz powiem wiatru z tego przejscia, wiec pewnie jest to wyjscie.\n");
+}
 
 void chglocAKT1(Hero *hero)
 {
@@ -146,41 +187,83 @@ void chglocAKT1(Hero *hero)
 		switch (x)
 		{
 		case 'a':
-			if (*WajchaStat == 0)
+			if (*ToporStat == 0)
 			{
-				OgrodWajcha0();
-			}
-			else
-			{
-				printf("Przechodzisz do Ogrodu.\n");
-				hero->loc = 'a';
-				OgrodOpis();
-				char ogrod_glebia;
-				printf("Czy chcesz sie rozejrzec dokladniej? (T/N)\n");
-				scanf_s("%c", &ogrod_glebia, 1);
-				getchar();
-				if (ogrod_glebia == 'T' || ogrod_glebia == 't')																					
+				if (*WajchaStat == 0)
 				{
-					OgrodGlebiaOpis();
-					printf("Czy chcesz przesunac wielka dzwignie? (T/N)\n");
-					char ogrod_glebia_dzwignia;
-					scanf_s("%c", &ogrod_glebia_dzwignia, 1);
-					getchar();
-					if (ogrod_glebia_dzwignia == 'T' || ogrod_glebia_dzwignia == 't')
-					{
-						OgrodGlebiaWajchaOpis();
-						*WajchaStat = 1;
-						//						printf("%d\n", *WajchaStat);
-					}
-					else
-					{
-						printf("Nie robisz niczego.\n");															
-						printf("%d\n", *WajchaStat);
-					}
+					OgrodWajcha0();
 				}
 				else
 				{
-					printf("Nie podejmujesz akcji. Lenistwo jest pewnego rodzaju loteria tak samo jak dzialanie.\n");
+					printf("Przechodzisz do Ogrodu.\n");
+					hero->loc = 'a';
+					OgrodOpis();
+					char ogrod_glebia;
+					printf("Czy chcesz sie rozejrzec dokladniej? (T/N)\n");
+					scanf_s("%c", &ogrod_glebia, 1);
+					getchar();
+					if (ogrod_glebia == 'T' || ogrod_glebia == 't')
+					{
+						OgrodGlebiaOpis();
+						printf("Czy chcesz przesunac wielka dzwignie? (T/N)\n");
+						char ogrod_glebia_dzwignia;
+						scanf_s("%c", &ogrod_glebia_dzwignia, 1);
+						getchar();
+						if (ogrod_glebia_dzwignia == 'T' || ogrod_glebia_dzwignia == 't')
+						{
+							OgrodGlebiaWajchaOpis();
+							*WajchaStat = 1;
+							//						printf("%d\n", *WajchaStat);
+						}
+						else
+						{
+							printf("Nie robisz niczego.\n");
+							printf("%d\n", *WajchaStat);
+						}
+					}
+					else
+					{
+						printf("Nie podejmujesz akcji. Lenistwo jest pewnego rodzaju loteria tak samo jak dzialanie.\n");
+					}
+				}
+			}
+			else
+			{
+				OgrodToDrzewo();
+				char DrzewoSciecie;
+				printf("Czy chcesz sciac? (T/N)\n");
+				scanf_s("%c", &DrzewoSciecie, 1);
+				getchar();
+				if (DrzewoSciecie == 'T' || DrzewoSciecie == 't')
+				{
+					if (hero->klasa == 'M' || hero->klasa == 'm')
+					{
+						int MatOdp = 5;
+						DrzewoPyt();
+						while (MatOdp != 6)
+						{
+							printf("Twoja odpowiedz: ");
+							scanf_s("%d", &MatOdp, 1);
+							getchar();
+						}
+						printf("\"WIDZE, ZE PODSTAWY SA CI ZNANE\".\n");
+						printf("\"WIESZ, NUDNE JEST TAKIE STANIE. POSTANAWIAM DO CIEBIE DOLACZYC PRZYNAJMNIEJ NA RAZIE\".\n");
+						printf("Drzewo zmienia sie w kostur i pojawia sie w twojej rece.\n");
+						*DrzewoStat = 1; 
+					}
+					if (hero->klasa == 'L' || hero->klasa == 'l')
+					{
+						printf("Kilka silnych uderzen pozwala na zrownanie drzewa z okolicznym podlozem.\n");
+						printf("Zagladajac do wnetrza stworzenia zauwazasz, ze wrosly tam sztylety.\n");
+						printf("Martwe drzewo raczej ich nie potrzebuje, wiec zabierasz je ze soba.\n");
+						*DrzewoStat = 1;
+					}
+					if (hero->klasa == 'W' || hero->klasa == 'w')
+					{
+						printf("Scinasz drzewo jednym, poteznym ciosem.\n");
+						printf("Niestety, nie zauwazasz, aby mial cos w sobie, wiec jego smierc nie ma wymiaru materialnego.\n");
+						*DrzewoStat = 1;
+					}
 				}
 			}
 			break;
@@ -213,7 +296,26 @@ void chglocAKT1(Hero *hero)
 		case 'c':
 			printf("Przechodzisz do Korytarza.\n");
 			hero->loc = 'c';
-			KorytarzOpis();
+			if (*DrzewoStat == 0)
+			{
+				KorytarzOpis0();
+			}
+			else
+			{
+				KorytarzOpis1();
+				printf("Czy chcesz pojsc tym przejsciem? (T/N)");
+				char WyjKor;
+				scanf_s("%c", &WyjKor, 1);
+				getchar();
+				if (WyjKor == 'T' || WyjKor == 't')
+				{
+					printf("Czujesz,ze pewien etap dobiega konca.");
+					printf("Swiatlo sloneczne po raz pierwszy ogrzewa twoja twarz.\n");
+					printf("Dosyc przyjemne uczucie po tak dlugim czasie spedzonym w zamknieciu.\n");
+					printf("Niestety nic nie trwa wiecznie. Zauwazasz wielkiego szczura, ktory nie wyglada zbyt przyjaznie.\n");
+
+				}
+			}
 			break;
 		default:
 			printf("Pojawiasz sie w pomieszczeniu poczatkowym. Moze pora na podjecie dzialan?\n");
@@ -239,7 +341,7 @@ Hero *create_hero()																										//Przydzielanie pamieci bohaterowi
 	hero->name = (char*)malloc(sizeof(char)*strlen(buffer) + 1);														//przypisanie zmiennej name wskazywanej przez hero rozmiaru char * dlugosc imienia
 	strcpy_s(hero->name, 50, buffer);																					//kopiowanie  name do hero->name ((zapisuje wartosc name do imienia bohatera))
 	
-    free(buffer);																							            //usuwanie pamieci buffera;
+    free(buffer);																							            //zwalnianie buffera;
 	hero->hp = 100;																										//zapisywanie hp																									
 	hero->mp = 100;																										//zapisywanie mp
 	hero->dmg = 50;
