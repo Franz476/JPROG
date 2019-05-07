@@ -42,7 +42,47 @@ void Walka1(Hero *hero)
 	{
 		char Akcja;
 		printf("Wolisz (A)takowac, czy sie (B)ronic?");
-
+		scanf_s("%c", &Akcja, 1);
+		getchar();
+		if (x == 'A' || x == 'a')
+		{
+			if (hero->klasa == 'W' || hero->klasa == "w")
+			{
+				printf("Wykonujesz zamach i zadajesz %d obrazen.\n", hero->dmg);
+				szczur->hp = szczur->hp - hero->dmg;
+				printf("Po uderzeniu szczur spojrzal wsciekle i rzucil sie zadajac %d obrazen.\n", szczur->dmg);
+				hero->hp = hero->hp - szczur->dmg;
+			}
+			if (hero->klasa == 'M' || hero->klasa == 'm')
+			{
+				printf("Rzucasz magiczny atak na szczura, ktory otrzymuje %d obrazen.\n", hero->dmg);
+				szczur->hp = szczur->hp - hero->dmg;
+				printf("Przeciwnik wydaje sie byc oszolomiony, ale szybko dochodzi do siebie i kontratakuje, czym zadaje %d obrazen.\n", szczur->dmg);
+				hero->hp = hero->hp - szczur->dmg;
+			}
+			else
+			{
+				printf("Za pomoca swoich nozy przecinasz skore szczura. Przerosniety gryzon niezwykle glosno syczy i otrzymuje %d obrazen\n", hero->dmg);
+				szczur->hp = szczur->hp - hero->dmg;
+				printf("Mimo obfitego krwawienia przeciwnik postanawia kotratakowac i zadaje %d obrazen.\n",szczur->dmg);
+				hero->hp = hero->hp - szczur->dmg;
+			}
+		}
+		else
+		{
+			if (hero->klasa == 'W' || hero->klasa == "w")
+			{
+				printf("Wykorzystujesz swoja wielka sile i topor do zablokowania ataku szczura.\n");
+			}
+			if (hero->klasa == 'M' || hero->klasa == 'm')
+			{
+				printf("Tworzysz przed soba magiczna tarcze, ktora zatrzymuje atak gryzonia.\n");
+			}
+			else
+			{
+				printf("Dzieki swojej zwinnosci unikasz zebow szczura w ostatnim momencie.\n");
+			}
+		}
 	}
 }
 
