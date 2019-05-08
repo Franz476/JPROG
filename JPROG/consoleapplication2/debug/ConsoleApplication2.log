@@ -1,2 +1,4 @@
 ﻿  ConsoleApplication2.cpp
-c:\users\eryk1\desktop\jprog\jprog\consoleapplication2\consoleapplication2.cpp : fatal error C1041: nie można otworzyć bazy danych programu 'C:\Users\eryk1\Desktop\JPROG\JPROG\consoleapplication2\Debug\vc141.idb'; jeśli wiele CL.exe zapisuje do tego samego pliku .PDB, użyj /FS
+c:\users\eryk1\desktop\jprog\jprog\consoleapplication2\consoleapplication2.cpp(296): warning C4474: „scanf_s”: przekazano za dużo argumentów dla ciągu formatowania
+  c:\users\eryk1\desktop\jprog\jprog\consoleapplication2\consoleapplication2.cpp(296): note: symbole zastępcze i ich parametry oczekują 1 argumentów ze zmienną liczbą argumentów, ale podano następującą liczbę zmiennych argumentów: 2
+  ConsoleApplication2.vcxproj -> C:\Users\eryk1\Desktop\JPROG\JPROG\consoleapplication2\Debug\ConsoleApplication2.exe

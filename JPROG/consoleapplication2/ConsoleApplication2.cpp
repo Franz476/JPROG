@@ -44,33 +44,33 @@ void Walka1(Hero *hero)
 		printf("Wolisz (A)takowac, czy sie (B)ronic?");
 		scanf_s("%c", &Akcja, 1);
 		getchar();
-		if (x == 'A' || x == 'a')
+		if (Akcja == 'A' || Akcja == 'a')
 		{
-			if (hero->klasa == 'W' || hero->klasa == "w")
+			if (hero->klasa == 'W' || hero->klasa == 'w')
 			{
 				printf("Wykonujesz zamach i zadajesz %d obrazen.\n", hero->dmg);
-				szczur->hp = szczur->hp - hero->dmg;
-				printf("Po uderzeniu szczur spojrzal wsciekle i rzucil sie zadajac %d obrazen.\n", szczur->dmg);
-				hero->hp = hero->hp - szczur->dmg;
+				szczur.hp = szczur.hp - hero->dmg;
+				printf("Po uderzeniu szczur spojrzal wsciekle i rzucil sie zadajac %d obrazen.\n", szczur.dmg);
+				hero->hp = hero->hp - szczur.dmg;
 			}
 			if (hero->klasa == 'M' || hero->klasa == 'm')
 			{
 				printf("Rzucasz magiczny atak na szczura, ktory otrzymuje %d obrazen.\n", hero->dmg);
-				szczur->hp = szczur->hp - hero->dmg;
-				printf("Przeciwnik wydaje sie byc oszolomiony, ale szybko dochodzi do siebie i kontratakuje, czym zadaje %d obrazen.\n", szczur->dmg);
-				hero->hp = hero->hp - szczur->dmg;
+				szczur.hp = szczur.hp - hero->dmg;
+				printf("Przeciwnik wydaje sie byc oszolomiony, ale szybko dochodzi do siebie i kontratakuje, czym zadaje %d obrazen.\n", szczur.dmg);
+				hero->hp = hero->hp - szczur.dmg;
 			}
 			else
 			{
 				printf("Za pomoca swoich nozy przecinasz skore szczura. Przerosniety gryzon niezwykle glosno syczy i otrzymuje %d obrazen\n", hero->dmg);
-				szczur->hp = szczur->hp - hero->dmg;
-				printf("Mimo obfitego krwawienia przeciwnik postanawia kotratakowac i zadaje %d obrazen.\n",szczur->dmg);
-				hero->hp = hero->hp - szczur->dmg;
+				szczur.hp = szczur.hp - hero->dmg;
+				printf("Mimo obfitego krwawienia przeciwnik postanawia kotratakowac i zadaje %d obrazen.\n",szczur.dmg);
+				hero->hp = hero->hp - szczur.dmg;
 			}
 		}
 		else
 		{
-			if (hero->klasa == 'W' || hero->klasa == "w")
+			if (hero->klasa == 'W' || hero->klasa == 'w')
 			{
 				printf("Wykorzystujesz swoja wielka sile i topor do zablokowania ataku szczura.\n");
 			}
@@ -156,7 +156,7 @@ void DrzewoPyt()
 	printf("\"POWIEDZ MI WIEC, ILE WYNOSI 2+2*2?\"");
 }
 
-void OgrodWajcha0()																																						//
+void OgrodWajcha1()																																						//
 {																																										//
 	printf("Znasz juz to miejsce.");																																	//
 	printf("Dalsza wedrowka nie ma sensu.");																															//
@@ -180,6 +180,11 @@ void ToporPowstanie()																																					//
 	printf("Przed toba,a kamiennej podlodze, pojawia sie napis zapisany jakby ogniem.\n");																				//
 	printf("\"POJAWIL SIE TEN, KTORY WLADA OGNIEM, CHOCIAZ SAM NIEROZPALONY JEST. ON oBALI TRZECH TYRANOW I UWOLNI NAS\"\n");											//
 	printf("Wszystko znika rownie szybko jak sie zaczelo.\n");																											//
+}																																										//
+																																										//
+void KuzniaUzyta()																																						//
+{																																										//
+	printf("Nie ma tutaj juz nic ciekawego.\n");																														//
 }																																										//
 
 void ToporNiePowstanie()
@@ -208,17 +213,28 @@ void KorytarzOpis1()
 	printf("Czujesz powiem wiatru z tego przejscia, wiec pewnie jest to wyjscie.\n");
 }
 
+void Akt2odpoczynek()
+{
+	printf("Natychmiast po zakonczeniu walki przechodzisz do kolejnego pomieszczenia, z ktorego prowadza trzy sciezki.\n");
+	printf("Padasz na ziemie i odpoczywasz do pelnego wyzdrowienia.\n");
+}
+
 void chglocAKT1(Hero *hero)
 {
 	int akt1 = 1;
 	*winAKT1 = akt1;
-	int *DrzewoStat = NULL;
-	int *WajchaStat = NULL;
-	int *ToporStat = NULL;
+	int *DrzewoStat;
+	int *WajchaStat;
+	int *ToporStat;
 
 	WajchaStat = (int*)malloc(sizeof(int));
 	ToporStat = (int*)malloc(sizeof(int));
 	DrzewoStat = (int*)malloc(sizeof(int));
+
+	*DrzewoStat = 0;
+	*WajchaStat = 0;
+	*ToporStat = 0;
+
 	char x;
 	while (akt1)
 	{
@@ -229,9 +245,9 @@ void chglocAKT1(Hero *hero)
 		case 'a':
 			if (*ToporStat == 0)
 			{
-				if (*WajchaStat == 0)
+				if (*WajchaStat == 1)
 				{
-					OgrodWajcha0();
+					OgrodWajcha1();
 				}
 				else
 				{
@@ -310,27 +326,34 @@ void chglocAKT1(Hero *hero)
 		case 'b':
 			printf("Przechodzisz do Kuzni.\n");
 			hero->loc = 'b';
-			if (*WajchaStat == 1)
+			if (*ToporStat == 1)
 			{
-				KuzniaONOpis();
-				printf("Moze warto przetopic");
-				char kuznia_przetapianie;
-				printf("Jaka jest twoja decyzja co do amatorskich prac kowalskich? (T/N)\n");
-				scanf_s("%c", &kuznia_przetapianie, 1);
-				getchar();
-				if (kuznia_przetapianie == 'T' || kuznia_przetapianie == 't')
-				{
-					ToporPowstanie();
-					*ToporStat = 1;
-				}
-				else
-				{
-					ToporNiePowstanie();
-				}
+				KuzniaUzyta();
 			}
 			else
 			{
-				KuzniaOFFOpis();
+				if (*WajchaStat == 1)
+				{
+					KuzniaONOpis();
+					printf("Moze warto przetopic");
+					char kuznia_przetapianie;
+					printf("Jaka jest twoja decyzja co do amatorskich prac kowalskich? (T/N)\n");
+					scanf_s("%c", &kuznia_przetapianie, 1);
+					getchar();
+					if (kuznia_przetapianie == 'T' || kuznia_przetapianie == 't')
+					{
+						ToporPowstanie();
+						*ToporStat = 1;
+					}
+					else
+					{
+						ToporNiePowstanie();
+					}
+				}
+				else
+				{
+					KuzniaOFFOpis();
+				}
 			}
 			break;
 		case 'c':
@@ -353,7 +376,7 @@ void chglocAKT1(Hero *hero)
 					printf("Swiatlo sloneczne po raz pierwszy ogrzewa twoja twarz.\n");
 					printf("Dosyc przyjemne uczucie po tak dlugim czasie spedzonym w zamknieciu.\n");
 					printf("Niestety nic nie trwa wiecznie. Zauwazasz wielkiego szczura, ktory nie wyglada zbyt przyjaznie.\n");
-
+					akt1 = 0;
 				}
 			}
 			break;
@@ -366,6 +389,45 @@ void chglocAKT1(Hero *hero)
 
 	}
 }
+
+void chglocAKT2(Hero *hero)
+{
+	int akt2 = 1;
+	*winAKT2 = akt2;
+	Akt2odpoczynek();
+	hero->hp = 100;
+	char y;
+	while (akt2)
+	{
+		int *RybaStat;
+		int *FiletStat;
+		int *CosStat;
+
+		RybaStat = (int*)malloc(sizeof(int));
+		FiletStat = (int*)malloc(sizeof(int));
+		CosStat = (int*)malloc(sizeof(int));
+
+		*RybaStat = 0;
+		*FiletStat = 0;
+		*CosStat = 0;
+
+		printf("Gdzie chcesz sie udac? Kuchnia(d), Dziedziniec(e), czy Staw(f)\n");
+		scanf_s("%c", &y, 1);
+		switch (y)
+			case 'd'
+
+			break;
+			case 'e'
+
+			break;
+			case 'f'
+
+			break;
+			default
+				printf("Znowu jestes w pomieszczeniu z trzema sciezkami. Gdzie postanawiasz pojsc? Kuchania(d), Dziedziniec(e), czy Staw(f)?\n");
+	}
+}
+
 
 Hero *create_hero()																										//Przydzielanie pamieci bohaterowi
 {
@@ -446,6 +508,7 @@ int main()
 	hero=create_hero();
 	prolog2(hero);																										//przekazujemy go prologowi
 	akt1(hero);
+	Walka1(hero);
 	free(hero);																											//prawdziwa przygoda bohatera konczy sie dopiero tutaj
 	return 0;
 }
