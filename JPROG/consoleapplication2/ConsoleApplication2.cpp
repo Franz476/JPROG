@@ -24,13 +24,15 @@ typedef struct Hero
 	char loc = NULL;																											//lokacja 
 	int hp;
 	int mp;
-	int dmg;
+	int MaxDmg;
+	int MinDmg;
 } Hero;
 
 typedef struct Szczur
 {
 	int hp = 100;
-	int dmg = 20;
+	int MinDmg = 15;
+	int MaxDmg = 25;
 	int status = 1;
 } Szczur;
 
@@ -40,6 +42,8 @@ void Walka1(Hero *hero)
 	Szczur szczur;
 	while (hero->hp > 0 && szczur.hp > 0)
 	{
+		int ObrSz = (rand() % (szczur->MaxDmg – szczur->MinDmg + 1)) + szczur->MinDmg;												//Losowanie obrazen Szczura
+		int ObrHe = (rand() % (hero->MaxDmg – hero->MinDmg + 1)) + hero->MinDmg;													//Losowanie obrazen Bohatera
 		char Akcja;
 		printf("Wolisz (A)takowac, czy sie (B)ronic?");
 		scanf_s("%c", &Akcja, 1);
@@ -48,6 +52,7 @@ void Walka1(Hero *hero)
 		{
 			if (hero->klasa == 'W' || hero->klasa == 'w')
 			{
+<<<<<<< HEAD
 				printf("Wykonujesz zamach i zadajesz %d obrazen.\n", hero->dmg);
 				szczur.hp = szczur.hp - hero->dmg;
 				printf("Po uderzeniu szczur spojrzal wsciekle i rzucil sie zadajac %d obrazen.\n", szczur.dmg);
@@ -66,6 +71,26 @@ void Walka1(Hero *hero)
 				szczur.hp = szczur.hp - hero->dmg;
 				printf("Mimo obfitego krwawienia przeciwnik postanawia kotratakowac i zadaje %d obrazen.\n",szczur.dmg);
 				hero->hp = hero->hp - szczur.dmg;
+=======
+				printf("Wykonujesz zamach i zadajesz %d obrazen.\n", ObrHe);
+				szczur->hp = szczur->hp - ObrHe;
+				printf("Po uderzeniu szczur spojrzal wsciekle i rzucil sie zadajac %d obrazen.\n", ObrSz);
+				hero->hp = hero->hp - ObrSz;
+			}
+			if (hero->klasa == 'M' || hero->klasa == 'm')
+			{
+				printf("Rzucasz magiczny atak na szczura, ktory otrzymuje %d obrazen.\n", ObrHe);
+				szczur->hp = szczur->hp - ObrHe;
+				printf("Przeciwnik wydaje sie byc oszolomiony, ale szybko dochodzi do siebie i kontratakuje, czym zadaje %d obrazen.\n", ObrSz);
+				hero->hp = hero->hp - ObrSz;
+			}
+			else
+			{
+				printf("Za pomoca swoich nozy przecinasz skore szczura. Przerosniety gryzon niezwykle glosno syczy i otrzymuje %d obrazen\n", ObrHe);
+				szczur->hp = szczur->hp - ObrHe;
+				printf("Mimo obfitego krwawienia przeciwnik postanawia kotratakowac i zadaje %d obrazen.\n", ObrSz);
+				hero->hp = hero->hp - ObrSz;
+>>>>>>> Dodane losowanie obrażeń.
 			}
 		}
 		else
@@ -446,7 +471,8 @@ Hero *create_hero()																										//Przydzielanie pamieci bohaterowi
     free(buffer);																							            //zwalnianie buffera;
 	hero->hp = 100;																										//zapisywanie hp																									
 	hero->mp = 100;																										//zapisywanie mp
-	hero->dmg = 50;
+	hero->MinDmg = 40;
+	hero->MaxDmg = 60;
 	char klasa;																											//deklaracja klasy
 	printf("Jaka klase wybierasz? (W)ojownik, (M)ag, czy moze (L)otrzyk? ");
 	scanf_s("%c", &klasa, 1);
