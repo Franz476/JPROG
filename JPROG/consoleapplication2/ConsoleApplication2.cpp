@@ -42,8 +42,8 @@ void Walka1(Hero *hero)
 	Szczur szczur;
 	while (hero->hp > 0 && szczur.hp > 0)
 	{
-		int ObrSz = (rand() % (szczur->MaxDmg – szczur->MinDmg + 1)) + szczur->MinDmg;												//Losowanie obrazen Szczura
-		int ObrHe = (rand() % (hero->MaxDmg – hero->MinDmg + 1)) + hero->MinDmg;													//Losowanie obrazen Bohatera
+		int ObrSz = (rand() % (szczur->MaxDmg – szczur->MinDmg + 1)) + szczur->MinDmg;												//Losowanie obrazen szczura
+		int ObrHe = (rand() % (hero->MaxDmg – hero->MinDmg + 1)) + hero->MinDmg;													//Losowanie obrazen bohatera
 		char Akcja;
 		printf("Wolisz (A)takowac, czy sie (B)ronic?");
 		scanf_s("%c", &Akcja, 1);
