@@ -1,0 +1,32 @@
+diff a/JPROG/consoleapplication2/ConsoleApplication2.cpp b/JPROG/consoleapplication2/ConsoleApplication2.cpp	(rejected hunks)
+@@ -87,11 +87,30 @@
+ 			}
+ 			else
+ 			{
++=======
++				printf("Wykonujesz zamach i zadajesz %d obrazen.\n", ObrHe);
++				szczur->hp = szczur->hp - ObrHe;
++				printf("Po uderzeniu szczur spojrzal wsciekle i rzucil sie zadajac %d obrazen.\n", ObrSz);
++				hero->hp = hero->hp - ObrSz;
++			}
++			if (hero->klasa == 'M' || hero->klasa == 'm')
++			{
++				printf("Rzucasz magiczny atak na szczura, ktory otrzymuje %d obrazen.\n", ObrHe);
++				szczur->hp = szczur->hp - ObrHe;
++				printf("Przeciwnik wydaje sie byc oszolomiony, ale szybko dochodzi do siebie i kontratakuje, czym zadaje %d obrazen.\n", ObrSz);
++				hero->hp = hero->hp - ObrSz;
++			}
++			else
++			{
++>>>>>>> master
+ 				printf("Za pomoca swoich nozy przecinasz skore szczura. Przerosniety gryzon niezwykle glosno syczy i otrzymuje %d obrazen\n", ObrHe);
+ 				szczur->hp = szczur->hp - ObrHe;
+ 				printf("Mimo obfitego krwawienia przeciwnik postanawia kotratakowac i zadaje %d obrazen.\n", ObrSz);
+ 				hero->hp = hero->hp - ObrSz;
++<<<<<<< HEAD
+ >>>>>>> Dodane losowanie obrażeń.
++=======
++>>>>>>> master
+ 			}
+ 		}
+ 		else
