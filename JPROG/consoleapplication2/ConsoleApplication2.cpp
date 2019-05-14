@@ -53,6 +53,7 @@ void Walka1(Hero *hero)
 			if (hero->klasa == 'W' || hero->klasa == 'w')
 			{
 <<<<<<< HEAD
+<<<<<<< HEAD
 				printf("Wykonujesz zamach i zadajesz %d obrazen.\n", hero->dmg);
 				szczur.hp = szczur.hp - hero->dmg;
 				printf("Po uderzeniu szczur spojrzal wsciekle i rzucil sie zadajac %d obrazen.\n", szczur.dmg);
@@ -86,11 +87,30 @@ void Walka1(Hero *hero)
 			}
 			else
 			{
+=======
+				printf("Wykonujesz zamach i zadajesz %d obrazen.\n", ObrHe);
+				szczur->hp = szczur->hp - ObrHe;
+				printf("Po uderzeniu szczur spojrzal wsciekle i rzucil sie zadajac %d obrazen.\n", ObrSz);
+				hero->hp = hero->hp - ObrSz;
+			}
+			if (hero->klasa == 'M' || hero->klasa == 'm')
+			{
+				printf("Rzucasz magiczny atak na szczura, ktory otrzymuje %d obrazen.\n", ObrHe);
+				szczur->hp = szczur->hp - ObrHe;
+				printf("Przeciwnik wydaje sie byc oszolomiony, ale szybko dochodzi do siebie i kontratakuje, czym zadaje %d obrazen.\n", ObrSz);
+				hero->hp = hero->hp - ObrSz;
+			}
+			else
+			{
+>>>>>>> master
 				printf("Za pomoca swoich nozy przecinasz skore szczura. Przerosniety gryzon niezwykle glosno syczy i otrzymuje %d obrazen\n", ObrHe);
 				szczur->hp = szczur->hp - ObrHe;
 				printf("Mimo obfitego krwawienia przeciwnik postanawia kotratakowac i zadaje %d obrazen.\n", ObrSz);
 				hero->hp = hero->hp - ObrSz;
+<<<<<<< HEAD
 >>>>>>> Dodane losowanie obrażeń.
+=======
+>>>>>>> master
 			}
 		}
 		else
