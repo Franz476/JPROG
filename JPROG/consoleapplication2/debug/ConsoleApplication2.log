@@ -1,4 +1,13 @@
 ﻿  ConsoleApplication2.cpp
-c:\users\eryk1\desktop\jprog\jprog\consoleapplication2\consoleapplication2.cpp(296): warning C4474: „scanf_s”: przekazano za dużo argumentów dla ciągu formatowania
-  c:\users\eryk1\desktop\jprog\jprog\consoleapplication2\consoleapplication2.cpp(296): note: symbole zastępcze i ich parametry oczekują 1 argumentów ze zmienną liczbą argumentów, ale podano następującą liczbę zmiennych argumentów: 2
-  ConsoleApplication2.vcxproj -> C:\Users\eryk1\Desktop\JPROG\JPROG\consoleapplication2\Debug\ConsoleApplication2.exe
+c:\users\eryk1\desktop\jprog\jprog\consoleapplication2\consoleapplication2.cpp(45): error C3873: „0x2013”: ten znak nie jest obsługiwany jako pierwszy znak identyfikatora
+c:\users\eryk1\desktop\jprog\jprog\consoleapplication2\consoleapplication2.cpp(45): error C2146: błąd składniowy: brakuje „)” przed identyfikatorem „–”
+c:\users\eryk1\desktop\jprog\jprog\consoleapplication2\consoleapplication2.cpp(46): error C3873: „0x2013”: ten znak nie jest obsługiwany jako pierwszy znak identyfikatora
+c:\users\eryk1\desktop\jprog\jprog\consoleapplication2\consoleapplication2.cpp(46): error C2146: błąd składniowy: brakuje „)” przed identyfikatorem „–”
+c:\users\eryk1\desktop\jprog\jprog\consoleapplication2\consoleapplication2.cpp(69): error C2143: błąd składniowy: brakuje „)” przed „;”
+c:\users\eryk1\desktop\jprog\jprog\consoleapplication2\consoleapplication2.cpp(275): error C2447: "{": brak nagłówka funkcji (stary styl formalnej listy?)
+c:\users\eryk1\desktop\jprog\jprog\consoleapplication2\consoleapplication2.cpp(288): error C2447: "{": brak nagłówka funkcji (stary styl formalnej listy?)
+c:\users\eryk1\desktop\jprog\jprog\consoleapplication2\consoleapplication2.cpp(383): warning C4474: „scanf_s”: przekazano za dużo argumentów dla ciągu formatowania
+  c:\users\eryk1\desktop\jprog\jprog\consoleapplication2\consoleapplication2.cpp(383): note: symbole zastępcze i ich parametry oczekują 1 argumentów ze zmienną liczbą argumentów, ale podano następującą liczbę zmiennych argumentów: 2
+c:\users\eryk1\desktop\jprog\jprog\consoleapplication2\consoleapplication2.cpp(524): error C2046: niedozwolony case
+c:\users\eryk1\desktop\jprog\jprog\consoleapplication2\consoleapplication2.cpp(550): error C2046: niedozwolony case
+c:\users\eryk1\desktop\jprog\jprog\consoleapplication2\consoleapplication2.cpp(584): error C2047: niedozwolony domyślny

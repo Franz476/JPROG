@@ -42,7 +42,7 @@ void Walka1(Hero *hero)
 	Szczur szczur;
 	while (hero->hp > 0 && szczur.hp > 0)
 	{
-		int ObrSz = (rand() % (szczur->MaxDmg – szczur->MinDmg + 1)) + szczur->MinDmg;												//Losowanie obrazen szczura
+		int ObrSz = (rand() % (szczur.MaxDmg – szczur.MinDmg + 1)) + szczur.MinDmg;												//Losowanie obrazen szczura
 		int ObrHe = (rand() % (hero->MaxDmg – hero->MinDmg + 1)) + hero->MinDmg;													//Losowanie obrazen bohatera
 		char Akcja;
 		printf("Wolisz (A)takowac, czy sie (B)ronic?");
@@ -52,23 +52,23 @@ void Walka1(Hero *hero)
 		{
 			if (hero->klasa == 'W' || hero->klasa == 'w')
 			{
-				printf("Wykonujesz zamach i zadajesz %d obrazen.\n", hero->dmg);
+				printf("Wykonujesz zamach i zadajesz %d obrazen.\n", ObrHe);
 				szczur.hp = szczur.hp - ObrHe;
-				printf("Po uderzeniu szczur spojrzal wsciekle i rzucil sie zadajac %d obrazen.\n", szczur.dmg);
+				printf("Po uderzeniu szczur spojrzal wsciekle i rzucil sie zadajac %d obrazen.\n", ObrSz);
 				hero->hp = hero->hp - ObrSz;
 			}
 			if (hero->klasa == 'M' || hero->klasa == 'm')
 			{
-				printf("Rzucasz magiczny atak na szczura, ktory otrzymuje %d obrazen.\n", hero->dmg);
+				printf("Rzucasz magiczny atak na szczura, ktory otrzymuje %d obrazen.\n", ObrHe);
 				szczur.hp = szczur.hp - ObrHe;
-				printf("Przeciwnik wydaje sie byc oszolomiony, ale szybko dochodzi do siebie i kontratakuje, czym zadaje %d obrazen.\n", szczur.dmg);
+				printf("Przeciwnik wydaje sie byc oszolomiony, ale szybko dochodzi do siebie i kontratakuje, czym zadaje %d obrazen.\n", ObrSz);
 				hero->hp = hero->hp - ObrSz;
 			}
 			else
 			{
-				printf("Za pomoca swoich nozy przecinasz skore szczura. Przerosniety gryzon niezwykle glosno syczy i otrzymuje %d obrazen\n", hero->dmg);
+				printf("Za pomoca swoich nozy przecinasz skore szczura. Przerosniety gryzon niezwykle glosno syczy i otrzymuje %d obrazen\n", ObrHe;
 				szczur.hp = szczur.hp - ObrHe;
-				printf("Mimo obfitego krwawienia przeciwnik postanawia kotratakowac i zadaje %d obrazen.\n",szczur.dmg);
+				printf("Mimo obfitego krwawienia przeciwnik postanawia kotratakowac i zadaje %d obrazen.\n", ObrSz);
 				hero->hp = hero->hp - ObrSz;
 /*=======
 				printf("Wykonujesz zamach i zadajesz %d obrazen.\n", ObrHe);
@@ -278,7 +278,7 @@ void DziedziniecOpis();
 	printf("Na srodku dziedzinca znajduje sie niewielka fontanna, ale oprocz estetyki nie dodaje ona niczego i nie jest warta uwagi.\n");
 }
 
-void Stawopis()
+void StawOpis()
 {
 	printf("jest to niewielka polna otocznona drzewami.\n");
 	printf("Na srodku znajduje sie oczko wodne, w ktorym plywa kilka ryb.\n");
@@ -288,6 +288,16 @@ void StawOpisPrzemiana();
 {
 	printf("Juz nie jest tak milo jak wczesniej.\n");
 	printf("Wokol miejsca, gdzie wczesniej byl staw a teraz jest zwykle wglebienie w ziemi pojawily sie dzwiczki w podlozu.\n Wzdluz starego brzegu pojawily sie zapalone swieczki. Caly teren pokryty zostal dziwnymi bialymi malunkami.\n");
+}
+
+void StawOpisDok()
+{
+	printf("Sa to kregi uzywane do przyzywania demonow.\n");
+}
+
+void StawOpisWsp()
+{
+	printf("Nie wiem skad, ale przypomina sie cos podobnego i nie jest to nic dobrego.\n");
 }
 
 void chglocAKT1(Hero *hero)
@@ -486,32 +496,32 @@ void chglocAKT2(Hero *hero)
 		scanf_s("%c", &y, 1);
 		getchar();
 		switch (y)
-			case 'd'
-			printf("Przechodzisz do kuchni.\n");
-			KuchniaOpis();
-			if (*RybaStat == 1)
-			{
-				printf("Moze warto przygotowac cos do jedzenia z tej ryby?\n");
-				printf("Chcesz to zrobic? (T/N)\n");
-				char RybSma;
-				scanf_s("%c", &RybSma, 1);
-				getchar();
-				if (RybSma == 'T' || RybSma == 't')
+			case 'd':
+				printf("Przechodzisz do kuchni.\n");
+				KuchniaOpis();
+				if (*RybaStat == 1)
 				{
-					printf("Rozpalasz ogien w palenisku znajdujacym sie w dolku na srodku kuchni. Nadziewasz rybe na patyk i pieczesz ja az nie uzyska ladnego ");
-					*FiletStat = 1;
+					printf("Moze warto przygotowac cos do jedzenia z tej ryby?\n");
+					printf("Chcesz to zrobic? (T/N)\n");
+						char RybSma;
+					scanf_s("%c", &RybSma, 1);
+					getchar();
+					if (RybSma == 'T' || RybSma == 't')
+					{
+						printf("Rozpalasz ogien w palenisku znajdujacym sie w dolku na srodku kuchni. Nadziewasz rybe na patyk i pieczesz ja az nie uzyska ladnego ");
+						*FiletStat = 1;
+					}
+					else
+					{
+						printf("Pomieszczenie nie zawiera juz niczego ciekawego. Wychodzisz z niego.\n");
+					}
 				}
 				else
 				{
-					printf("Pomieszczenie nie zawiera juz niczego ciekawego. Wychodzisz z niego.\n");
+					printf("Nic nie przyciaga juz wzroku. Trzeba szukac w innym miejscu.\n");
 				}
-			}
-			else
-			{
-				printf("Nic nie przyciaga juz wzroku. Trzeba szukac w innym miejscu.\n");
-			}
-			break;
-			case 'e'
+				break;
+			case 'e':
 				printf("Przechodzisz na dziedziniec.\n");
 				DziedziniecOpis();
 				if (*FiletStat == 1)
@@ -524,7 +534,7 @@ void chglocAKT2(Hero *hero)
 					{
 						printf("Znowu to samo - pojawia sie wiatr, ktory prawie lamie drzewka rosnace wokolo. W powietrzu pojawia kula plomieni i mowi \"TO ZNOWU TY? TYM RAZEM NIE BEDZIE TAK LATWO\".\n");
 						printf("myslisz sobie: \"Przeciez i tak duzego wyboru nie mam\".\n");
-						*CosStat == 1;
+						*CosStat = 1;
 					}
 					else
 					{
@@ -536,8 +546,8 @@ void chglocAKT2(Hero *hero)
 					printf("Poza ladnymi widokami nie ma tutaj niczego interesujacego.\n");
 					printf("Ostatecznie nie warto nawet zbytnio odpoczywac, bo mozliwosc szybszego powrotu do domu jest lepsza wizja.\n");
 				}
-			break;
-			case 'f'
+				break;
+			case 'f':
 				printf("Przechodzisz do stawu.\n");
 				if (*CosStat == 0)
 				{
@@ -571,7 +581,7 @@ void chglocAKT2(Hero *hero)
 					akt2 = 0;
 				}
 				break;
-			default
+			default:
 				printf("Znowu jestes w pomieszczeniu z trzema sciezkami. Gdzie postanawiasz pojsc? Kuchania(d), Dziedziniec(e), czy Staw(f)?\n");
 	}
 }
