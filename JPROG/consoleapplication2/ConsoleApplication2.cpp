@@ -131,6 +131,68 @@ void Walka1(Hero *hero)
 	}
 }
 
+typedef struct Ryba
+{
+	int hp = 100;
+	int MinDmg = 10;
+	int MaxDmg = 30;
+	int status = 1;
+} Ryba;
+
+void Walka2(Hero *hero)
+{
+	Ryba ryba;
+	while (hero->hp > 0 && ryba.hp > 0)
+	{
+		int Obrry = (rand() % (ryba.MaxDmg – ryba.MinDmg + 1)) + ryba.MinDmg;														//Losowanie obrazen ryby
+		int ObrHe = (rand() % (hero->MaxDmg – hero->MinDmg + 1)) + hero->MinDmg;													//Losowanie obrazen bohatera
+		char Akcja;
+		printf("Wolisz (A)takowac, czy sie (B)ronic?");
+		scanf_s("%c", &Akcja, 1);
+		getchar();
+		if (Akcja == 'A' || Akcja == 'a')
+		{
+			if (hero->klasa == 'W' || hero->klasa == 'w')
+			{
+				printf("Wykonujesz zamach i zadajesz %d obrazen.\n", ObrHe);
+				ryba.hp = ryba.hp - ObrHe;
+				printf("Po uderzeniu ryba wykrzywila pysk i zaatakowala zadajac %d obrazen.\n", Obrry);
+				hero->hp = hero->hp - Obrry;
+			}
+			if (hero->klasa == 'M' || hero->klasa == 'm')
+			{
+				printf("Rzucasz magiczny atak na wodnego stwora, ktory otrzymuje %d obrazen.\n", ObrHe);
+				ryba.hp = ryba.hp - ObrHe;
+				printf("Przeciwnik wydaje sie byc oszolomiony, ale szybko dochodzi do siebie i kontratakuje, czym zadaje %d obrazen.\n", Obrry);
+				hero->hp = hero->hp - Obrey;
+			}
+			else
+			{
+				printf("Za pomoca swoich nozy przecinasz powierzchnie ryby. Stwor wydaje glosne charczenie i otrzymuje %d obrazen\n", ObrHe;
+				ryba.hp = ryba.hp - ObrHe;
+				printf("Mimo obfitego krwawienia przeciwnik postanawia kotratakowac i zadaje %d obrazen.\n", ObrSz);
+				hero->hp = hero->hp - Obrry;
+			}
+		}
+		else
+		{
+			if (hero->klasa == 'W' || hero->klasa == 'w')
+			{
+				printf("Wykorzystujesz swoja wielka sile i topor do zablokowania ataku ryby.\n");
+			}
+			if (hero->klasa == 'M' || hero->klasa == 'm')
+			{
+				printf("Tworzysz przed soba magiczna tarcze, ktora zatrzymuje atak potwora.\n");
+			}
+			else
+			{
+				printf("Dzieki swojej zwinnosci unikasz ataku w ostatnim momencie.\n");
+			}
+		}
+	}
+}
+
+
 int *winAKT1 = NULL;
 int *winAKT2 = NULL;
 int *winAKT3 = NULL;
@@ -246,15 +308,15 @@ void KuzniaONOpis()
 
 }
 
-void KorytarzOpis0()																																						//
+void KorytarzOpis0()																																					//
 {																																										//
 	printf("Widzisz jedynie praktycznie niekonczaca sie sciezke. Jedynie latarnie podwieszane na scianie daja jakies swiatlo\n");										//		Opisy do Korytarza
 	printf("Czujesz przeciag, wiec prawdopodobnie gdzies jest przejscie, ale mimo dlugich poszukiwan nie mozesz go znalezc\n");											//
 }																																										//
-
-void KorytarzOpis1()
-{
-	printf("Widzisz, jak wraz z zamykajacymi sie za toba drzwiami otwiera sie kawalek sciany przed toba.\n");
+																																										//
+void KorytarzOpis1()																																					//
+{																																										//
+	printf("Widzisz, jak wraz z zamykajacymi sie za toba drzwiami otwiera sie kawalek sciany przed toba.\n");															//
 	printf("Czujesz powiem wiatru z tego przejscia, wiec pewnie jest to wyjscie.\n");
 }
 
@@ -266,7 +328,8 @@ void Akt2odpoczynek()
 
 void KuchniaOpis()
 {
-	printf("W srodku panuje balagan. Wyglad jest dosyc paradoksalny, bo z jednej strony widoczne sa slady niedawnego uzywania, ale z drugiej uwidaczniaja sie cechy wskazujace na dlugi brak obecnosci kogokolwiek.\n");
+	printf("W srodku panuje balagan. Wyglad jest dosyc paradoksalny, bo z jednej strony widoczne sa slady niedawnego uzywania,/n);
+		printf("ale z drugiej uwidaczniaja sie cechy wskazujace na dlugi brak obecnosci kogokolwiek.\n");
 	printf("Mniejsza z tym.\n");
 	printf("Wazniejsze sa praktyczne zastosowania plynace z istnienia takiego miejsca.\n");
 }
@@ -668,7 +731,8 @@ int main()
 	prolog2(hero);																										//przekazujemy go prologowi
 	akt1(hero);
 	Walka1(hero);
-	akt1(hero);
+	akt2(hero);
+	Walka2(hero);
 	free(hero);																											//prawdziwa przygoda bohatera konczy sie dopiero tutaj
 	return 0;
 }
