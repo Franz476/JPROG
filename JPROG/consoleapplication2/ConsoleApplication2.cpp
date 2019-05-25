@@ -363,6 +363,15 @@ void StawOpisWsp()
 	printf("Nie wiem skad, ale przypomina sie cos podobnego i nie jest to nic dobrego.\n");
 }
 
+void Akt3monolog()
+{
+	printf("Badz pozdrowiony CZEMPIONIE, wiedz, ze przed Toba pozostal ostatni przeciwnik.\n Twoje zwyciestwo nad nim bedzie oznaczac przywrocenie starego ladu,\n lecz badz ostrozny, gdyz jest to inteligentna i przebiegla istota.\n");
+	printf("bedzie chciala omamic twoj umysl, aby wykorzystac Cie do swoich wlasnych celow,\n jednak gdy juz osiagnie swoj cel, to zostawi Cie. Idz wyprostowany tam, gdzie gasna swiatla o swicie.\n");
+	printf("Badz odwazny, gdy przestaje dzialac rozum. Niech Twoj gniew, swiety gniew,\n wypelni cale twoje cialo i pchnie Cie do czynow wielkich. Celem krotkiego zywota nie jest przezycie,\n");
+	printf("daj swiadectwo zwego bytu. Wyryj je gleboko w skale, w wodzie, powietrzu i ogniu,\n a wtedy bedziesz mogl rzecz - \"Umarlem, wiec zyc bede wiecznie\".\n");
+	printf("Idz, bo tylko w ten sposob zasiadziesz na tronie z polamanych kregoslupow\n i dolaczysz do cyklu bohaterow, ktorych puste serca napelniaja\n prochy naszych nastepcow");
+}
+
 void chglocAKT1(Hero *hero)
 {
 	int akt1 = 1;
@@ -649,6 +658,18 @@ void chglocAKT2(Hero *hero)
 	}
 }
 
+void chglocAKT3(Hero *hero)
+{
+	int akt3 = 1;
+	*winAKT3 = akt3;
+	Akt3monolog();
+	hero->hp = 100;
+	char y;
+	while (akt3)
+	{
+
+	}
+}
 
 Hero *create_hero()																										//Przydzielanie pamieci bohaterowi
 {
