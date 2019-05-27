@@ -558,7 +558,7 @@ void chglocAKT2(Hero *hero)
 
 		RybaStat = (int*)malloc(sizeof(int));
 		FiletStat = (int*)malloc(sizeof(int));
-		CosStat = (int*)malloc(sizeof(int));
+		CosStat = (int*)malloc(sizeof(int));  
 
 		*RybaStat = 0;
 		*FiletStat = 0;
@@ -663,10 +663,31 @@ void chglocAKT3(Hero *hero)
 	int akt3 = 1;
 	*winAKT3 = akt3;
 	Akt3monolog();
+	printf("Myslisz \"no dobra\"");
 	hero->hp = 100;
-	char y;
+	char z;
 	while (akt3)
 	{
+		int *ZapalkiStat;
+		int *ZapalenieStat;
+		int *LustroStat;
+		int *PiwnicaStat;
+
+		ZapalkiStat = (int*)malloc(sizeof(int));
+		ZapalenieStat = (int*)malloc(sizeof(int));
+		LustroStat = (int*)malloc(sizeof(int));
+		PiwnicaStat = (int*)malloc(sizeof(int));
+
+		*ZapalkiStat = 0;
+		*ZapalenieStat = 0;
+		*LustroStat = 0;
+		*PiwnicaStat = 0;
+
+		printf("Co jest celem twojej wedrowki? Sala Tronowa(g), Piwnica(h), czy Tajemniczy pokoj(i)\n");
+		scanf_s("%c", &y, 1);
+		getchar();
+		switch (z)
+			case 'g':
 
 	}
 }
