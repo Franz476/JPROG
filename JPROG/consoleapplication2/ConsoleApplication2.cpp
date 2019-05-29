@@ -668,17 +668,17 @@ void chglocAKT3(Hero *hero)
 	char z;
 	while (akt3)
 	{
-		int *ZapalkiStat;
+		int *ZagiewStat;
 		int *ZapalenieStat;
 		int *LustroStat;
 		int *PiwnicaStat;
 
-		ZapalkiStat = (int*)malloc(sizeof(int));
+		ZagiewStat = (int*)malloc(sizeof(int));
 		ZapalenieStat = (int*)malloc(sizeof(int));
 		LustroStat = (int*)malloc(sizeof(int));
 		PiwnicaStat = (int*)malloc(sizeof(int));
 
-		*ZapalkiStat = 0;
+		*ZagiewStat = 0;
 		*ZapalenieStat = 0;
 		*LustroStat = 0;
 		*PiwnicaStat = 0;
@@ -688,7 +688,49 @@ void chglocAKT3(Hero *hero)
 		getchar();
 		switch (z)
 			case 'g':
-
+				printf("Przechodzisz do Sali Tronowej.\n");
+				SalaTronowaOpis();
+				printf("Chcesz sie dokladniej rozejrzec? (T/N)\n");
+				char Tron;
+				scanf_s("%c", &Tron, 1);
+				getchar();
+				if (Tron == 'T' || Tron == 't')
+					{
+					SalaTronowaOpisDok();
+					printf("Zauwazasz tlacy sie zagiew. Chcesz go wziac ze soba? (T/N)?");
+					char Zagiew;
+					scanf_s("%c", &Zagiew, 1);
+					getchar();
+					if(Zagiew == 'T' || Zagiew == 't')
+						{
+						printf("Podnosisz jedno z niewielu obecnych tu zrodel swiatla.\n);
+						printf("Niech ci dobrze sluzy i rozswietli mroki swiata.\n);
+						*ZagiewStat = 1;
+						}
+					else
+						{
+						printf("Pozostawiasz rozpalony kawalek drewna na zimnej, kamiennej podlodze.\n);
+						printf("Byc moze plomien nigdy nie rozswietli mrokow swiata.\n);
+						}
+				else
+					{
+					printf("Sala spowita w polmroku nie wydaje sie ci zbyt interesujaca.\n);
+					printf("Opuszczasz sale.\n");
+				       }
+			break;
+			
+			case 'h':
+				printf("Schodzisz do Piwnicy.\n");
+				PiwnicaOpis();
+				if( *ZagiewStat == 1)
+					       
+			break;
+		
+			case 'i':
+				printf("Wchodzisz do Tajemniczego Pokoju.\n");
+				TajemniczyPokojOpis();
+			break;
+				
 	}
 }
 
